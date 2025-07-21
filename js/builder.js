@@ -1,48 +1,12 @@
+// js/builder.js (Phiên bản đã sắp xếp lại và sửa lỗi)
+
 document.addEventListener('DOMContentLoaded', () => {
     
     // ===============================================
-    // PHẦN 1: "CƠ SỞ DỮ LIỆU" SẢN PHẨM (MÔ PHỎNG)
-    // Trong thực tế, bạn sẽ lấy dữ liệu này từ server.
-    // Các thuộc tính (attributes) là chìa khóa cho việc kiểm tra tương thích.
+    // PHẦN 1: KHAI BÁO BIẾN VÀ TRẠNG THÁI
     // ===============================================
-    const products = [
-        // CPUs
-        { id: 'cpu1', type: 'cpu', name: 'Intel Core i5-13400F', price: 5490000, attributes: { socket: 'LGA 1700', wattage: 65 } },
-        { id: 'cpu2', type: 'cpu', name: 'Intel Core i7-13700K', price: 10590000, attributes: { socket: 'LGA 1700', wattage: 125 } },
-        { id: 'cpu3', type: 'cpu', name: 'AMD Ryzen 5 7600X', price: 6200000, attributes: { socket: 'AM5', wattage: 105 } },
-        { id: 'cpu4', type: 'cpu', name: 'AMD Ryzen 7 7800X3D', price: 11500000, attributes: { socket: 'AM5', wattage: 120 } },
+    let currentBuild = { cpu: null, mainboard: null, ram: null, vga: null, psu: null };
 
-        // Mainboards
-        { id: 'mb1', type: 'mainboard', name: 'ASUS PRIME B760M-A WIFI D4', price: 4190000, attributes: { socket: 'LGA 1700', ddr: 'DDR4' } },
-        { id: 'mb2', type: 'mainboard', name: 'GIGABYTE Z790 AORUS ELITE AX', price: 7190000, attributes: { socket: 'LGA 1700', ddr: 'DDR5' } },
-        { id: 'mb3', type: 'mainboard', name: 'ASUS TUF GAMING B650-PLUS', price: 5590000, attributes: { socket: 'AM5', ddr: 'DDR5' } },
-        { id: 'mb4', type: 'mainboard', name: 'MSI MAG X670E TOMAHAWK WIFI', price: 8990000, attributes: { socket: 'AM5', ddr: 'DDR5' } },
-        
-        // RAM
-        { id: 'ram1', type: 'ram', name: 'Corsair Vengeance 16GB (2x8GB) Bus 3200', price: 1150000, attributes: { ddr: 'DDR4' } },
-        { id: 'ram2', type: 'ram', name: 'G.Skill Trident Z5 RGB 32GB (2x16GB) Bus 6000', price: 3250000, attributes: { ddr: 'DDR5' } },
-        
-        // VGA
-        { id: 'vga1', type: 'vga', name: 'GIGABYTE GeForce RTX 3060 12GB', price: 8290000, attributes: { wattage: 170 } },
-        { id: 'vga2', type: 'vga', name: 'ASUS TUF Gaming GeForce RTX 4070 Ti 12GB', price: 22490000, attributes: { wattage: 285 } },
-
-        // PSU
-        { id: 'psu1', type: 'psu', name: 'Cooler Master MWE 650W Bronze V2', price: 1590000, attributes: { wattage: 650 } },
-        { id: 'psu2', type: 'psu', name: 'Corsair RM850e 850W 80 Plus Gold', price: 2950000, attributes: { wattage: 850 } },
-    ];
-
-    // ===============================================
-    // PHẦN 2: QUẢN LÝ TRẠNG THÁI CẤU HÌNH
-    // ===============================================
-    let currentBuild = {
-        cpu: null,
-        mainboard: null,
-        ram: null,
-        vga: null,
-        psu: null
-    };
-
-    // DOM Elements
     const selectButtons = document.querySelectorAll('.btn-select');
     const modal = document.getElementById('product-modal');
     const modalTitle = document.getElementById('modal-title');
@@ -51,150 +15,140 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalPriceEl = document.getElementById('total-price');
     const compatibilityMessagesEl = document.getElementById('compatibility-messages');
     const addToCartButton = document.querySelector('.btn-add-to-cart');
-
-    let currentSelectingType = null;
+    let currentSelectingCategory = null;
 
     // ===============================================
-    // PHẦN 3: CÁC HÀM XỬ LÝ
+    // PHẦN 2: ĐỊNH NGHĨA TẤT CẢ CÁC HÀM CHỨC NĂNG
     // ===============================================
-    
-    // Mở Modal để chọn sản phẩm
-    function openModal(type) {
-        currentSelectingType = type;
+
+    // --- Hàm phụ để thêm thông báo ---
+    function addMessage(text, type) {
+        const li = document.createElement('li');
+        li.className = type;
+        li.textContent = text;
+        compatibilityMessagesEl.appendChild(li);
+    }
+
+    // --- Hàm kiểm tra tương thích ---
+    function checkCompatibility() {
+        compatibilityMessagesEl.innerHTML = '';
+        let errors = 0;
+        let componentsSelected = 0;
+        const { cpu, mainboard, ram, vga, psu } = currentBuild;
+
+        Object.values(currentBuild).forEach(comp => { if (comp) componentsSelected++; });
+
+        if (cpu && mainboard) {
+            if (cpu.attributes.socket === mainboard.attributes.socket) addMessage(`CPU & Mainboard: Socket ${cpu.attributes.socket} tương thích.`, 'success');
+            else { addMessage(`LỖI: CPU (Socket ${cpu.attributes.socket}) và Mainboard (Socket ${mainboard.attributes.socket}) không tương thích!`, 'error'); errors++; }
+        }
+
+        if (ram && mainboard) {
+            if (ram.attributes.ddr === mainboard.attributes.ddr) addMessage(`RAM & Mainboard: Chuẩn ${ram.attributes.ddr} tương thích.`, 'success');
+            else { addMessage(`LỖI: RAM (${ram.attributes.ddr}) không lắp được vào Mainboard yêu cầu ${mainboard.attributes.ddr}!`, 'error'); errors++; }
+        }
+
+        if (psu && (cpu || vga)) {
+            let requiredWattage = 150;
+            if (cpu) requiredWattage += cpu.attributes.wattage;
+            if (vga) requiredWattage += vga.attributes.wattage;
+            
+            if (psu.attributes.wattage >= requiredWattage) addMessage(`Nguồn ${psu.attributes.wattage}W đủ công suất (cần khoảng ${requiredWattage}W).`, 'success');
+            else { addMessage(`CẢNH BÁO: Nguồn ${psu.attributes.wattage}W có thể không đủ công suất (cần ít nhất ${requiredWattage}W).`, 'error'); errors++; }
+        }
+
+        if (compatibilityMessagesEl.innerHTML === '') addMessage('Hãy chọn linh kiện để bắt đầu kiểm tra.', 'info');
+
+        if (componentsSelected > 0 && errors === 0) addToCartButton.disabled = false;
+        else addToCartButton.disabled = true;
+    }
+
+    // --- Hàm cập nhật giao diện ---
+    function updateUI() {
+        let totalPrice = 0;
+        for (const category in currentBuild) {
+            const product = currentBuild[category];
+            const selectedItemEl = document.getElementById(`selected-${category}`);
+            if (product) {
+                selectedItemEl.innerHTML = `${product.name} <span class="price">${product.price.toLocaleString('vi-VN')}đ</span>`;
+                totalPrice += product.price;
+            } else if (selectedItemEl) {
+                selectedItemEl.textContent = 'Chưa chọn linh kiện';
+            }
+        }
+        totalPriceEl.textContent = `${totalPrice.toLocaleString('vi-VN')}đ`;
+        checkCompatibility();
+    }
+
+    // --- Hàm đóng Modal ---
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    // --- Hàm chọn sản phẩm ---
+    function selectProduct(product) {
+        currentBuild[product.category] = product;
+        updateUI();
+        closeModal();
+    }
+
+    // --- Hàm mở Modal ---
+    function openModal(category) {
+        currentSelectingCategory = category;
         modal.style.display = 'block';
-        modalTitle.textContent = `Chọn ${type.toUpperCase()}`;
+        modalTitle.textContent = `Chọn ${category.toUpperCase()}`;
         
-        // Lọc sản phẩm theo loại và hiển thị
-        const filteredProducts = products.filter(p => p.type === type);
-        modalProductList.innerHTML = ''; // Xóa danh sách cũ
+        const filteredProducts = allProducts.filter(p => p.category === category);
+        
+        modalProductList.innerHTML = '';
         filteredProducts.forEach(product => {
             const itemEl = document.createElement('div');
             itemEl.className = 'product-item';
-            itemEl.innerHTML = `
-                <span>${product.name}</span>
-                <strong>${product.price.toLocaleString()}đ</strong>
-            `;
+            itemEl.innerHTML = `<span>${product.name}</span><strong>${product.price.toLocaleString('vi-VN')}đ</strong>`;
             itemEl.addEventListener('click', () => selectProduct(product));
             modalProductList.appendChild(itemEl);
         });
     }
 
-    // Đóng Modal
-    function closeModal() {
-        modal.style.display = 'none';
-    }
+    // --- Hàm thêm cấu hình vào giỏ ---
+    function addBuildConfigToCart() {
+        const itemsToAdd = Object.values(currentBuild).filter(item => item !== null);
+        if (itemsToAdd.length === 0) {
+            alert("Bạn chưa chọn linh kiện nào!");
+            return;
+        }
 
+        console.log("Chuẩn bị thêm các sản phẩm sau vào giỏ:", itemsToAdd);
 
-    // Khi người dùng chọn một sản phẩm trong Modal
-    function selectProduct(product) {
-        currentBuild[product.type] = product;
-        updateUI();
-        closeModal();
-    }
-    
-    // Cập nhật giao diện người dùng sau khi có thay đổi
-    function updateUI() {
-        let totalPrice = 0;
-        
-        // Cập nhật từng dòng linh kiện đã chọn
-        for (const type in currentBuild) {
-            const product = currentBuild[type];
-            const selectedItemEl = document.getElementById(`selected-${type}`);
-            if (product) {
-                selectedItemEl.innerHTML = `${product.name} <span class="price">${product.price.toLocaleString()}đ</span>`;
-                totalPrice += product.price;
-            } else {
-                selectedItemEl.textContent = 'Chưa chọn linh kiện';
+        itemsToAdd.forEach(item => {
+            // Kiểm tra xem hàm addToCart có tồn tại không (từ file cart.js)
+            if (typeof addToCart === 'function') {
+                addToCart(item.id);
             }
-        }
-        
-        // Cập nhật tổng giá tiền
-        totalPriceEl.textContent = `${totalPrice.toLocaleString()}đ`;
-        
-        // Kiểm tra tương thích
-        checkCompatibility();
-    }
-    
-    // HÀM QUAN TRỌNG NHẤT: KIỂM TRA TƯƠNG THÍCH
-    function checkCompatibility() {
-        compatibilityMessagesEl.innerHTML = ''; // Xóa các thông báo cũ
-        let errors = 0;
+        });
 
-        const { cpu, mainboard, ram, vga, psu } = currentBuild;
-        
-        // 1. Kiểm tra CPU và Mainboard
-        if (cpu && mainboard) {
-            if (cpu.attributes.socket === mainboard.attributes.socket) {
-                addMessage(`CPU (${cpu.attributes.socket}) và Mainboard (${mainboard.attributes.socket}) tương thích Socket.`, 'success');
-            } else {
-                addMessage(`LỖI: CPU (${cpu.attributes.socket}) và Mainboard (${mainboard.attributes.socket}) KHÔNG tương thích Socket!`, 'error');
-                errors++;
-            }
-        }
-
-        // 2. Kiểm tra RAM và Mainboard
-        if (ram && mainboard) {
-            if (ram.attributes.ddr === mainboard.attributes.ddr) {
-                addMessage(`RAM (${ram.attributes.ddr}) và Mainboard (${mainboard.attributes.ddr}) tương thích.`, 'success');
-            } else {
-                addMessage(`LỖI: RAM (${ram.attributes.ddr}) KHÔNG lắp được vào Mainboard yêu cầu ${mainboard.attributes.ddr}!`, 'error');
-                errors++;
-            }
-        }
-        
-        // 3. Kiểm tra Nguồn
-        if (psu) {
-            let totalWattage = 0;
-            if (cpu) totalWattage += cpu.attributes.wattage;
-            if (vga) totalWattage += vga.attributes.wattage;
-            
-            // Thêm khoảng 100-150W cho các linh kiện khác và để an toàn
-            totalWattage += 150; 
-            
-            if (psu.attributes.wattage >= totalWattage) {
-                addMessage(`Nguồn ${psu.attributes.wattage}W đủ công suất (cần khoảng ${totalWattage}W).`, 'success');
-            } else {
-                addMessage(`CẢNH BÁO: Nguồn ${psu.attributes.wattage}W có thể không đủ công suất (cần ít nhất ${totalWattage}W).`, 'error');
-                errors++;
-            }
-        }
-        
-        if (compatibilityMessagesEl.innerHTML === '') {
-            addMessage('Hãy chọn thêm linh kiện để kiểm tra.', 'info');
-        }
-
-        // Kích hoạt/Vô hiệu hóa nút "Thêm vào giỏ"
-        if (errors > 0 || !cpu || !mainboard || !ram || !vga || !psu) {
-            addToCartButton.disabled = true;
-        } else {
-            addToCartButton.disabled = false;
+        // Mở giỏ hàng sau khi thêm để người dùng xem
+        if (typeof openCart === 'function') {
+            openCart();
         }
     }
-    
-    // Hàm phụ để thêm thông báo
-    function addMessage(text, type) {
-        const li = document.createElement('li');
-        li.className = type; // success, error, info
-        li.textContent = text;
-        compatibilityMessagesEl.appendChild(li);
-    }
-    
+
     // ===============================================
-    // PHẦN 4: GẮN SỰ KIỆN
+    // PHẦN 3: GẮN SỰ KIỆN VÀ KHỞI TẠO
     // ===============================================
+
+    // Gán sự kiện cho các nút "Chọn"
     selectButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const type = button.dataset.type;
-            openModal(type);
+            const category = button.dataset.category;
+            openModal(category);
         });
     });
 
+    // Gán sự kiện cho các nút trong Modal và nút "Thêm vào giỏ"
     closeButton.addEventListener('click', closeModal);
-    window.addEventListener('click', (event) => {
-        if (event.target == modal) {
-            closeModal();
-        }
-    });
+    window.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
+    addToCartButton.addEventListener('click', addBuildConfigToCart);
     
     // Khởi tạo giao diện ban đầu
     updateUI();

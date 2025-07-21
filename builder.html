@@ -24,40 +24,40 @@
             <h1 class="builder-title">Xây Dựng Cấu Hình PC Của Bạn</h1>
             <div class="builder-layout">
                 <div class="component-selector">
-                    <div class="component-row" data-type="cpu">
+                    <div class="component-row" data-category="cpu">
                         <div class="component-icon"><i class="fas fa-microchip"></i></div>
                         <div class="component-details">
                             <h4>1. CPU - Vi xử lý</h4>
                             <div class="selected-item" id="selected-cpu">Chưa chọn linh kiện</div>
-                        </div><button class="btn-select" data-type="cpu">Chọn</button>
+                        </div><button class="btn-select" data-category="cpu">Chọn</button>
                     </div>
-                    <div class="component-row" data-type="mainboard">
+                    <div class="component-row" data-category="mainboard">
                         <div class="component-icon"><i class="fas fa-server"></i></div>
                         <div class="component-details">
                             <h4>2. Mainboard - Bo mạch chủ</h4>
                             <div class="selected-item" id="selected-mainboard">Chưa chọn linh kiện</div>
-                        </div><button class="btn-select" data-type="mainboard">Chọn</button>
+                        </div><button class="btn-select" data-category="mainboard">Chọn</button>
                     </div>
-                    <div class="component-row" data-type="ram">
+                    <div class="component-row" data-category="ram">
                         <div class="component-icon"><i class="fas fa-memory"></i></div>
                         <div class="component-details">
                             <h4>3. RAM</h4>
                             <div class="selected-item" id="selected-ram">Chưa chọn linh kiện</div>
-                        </div><button class="btn-select" data-type="ram">Chọn</button>
+                        </div><button class="btn-select" data-category="ram">Chọn</button>
                     </div>
-                    <div class="component-row" data-type="vga">
+                    <div class="component-row" data-category="vga">
                         <div class="component-icon"><i class="fas fa-gamepad"></i></div>
                         <div class="component-details">
                             <h4>4. VGA - Card đồ họa</h4>
                             <div class="selected-item" id="selected-vga">Chưa chọn linh kiện</div>
-                        </div><button class="btn-select" data-type="vga">Chọn</button>
+                        </div><button class="btn-select" data-category="vga">Chọn</button>
                     </div>
-                    <div class="component-row" data-type="psu">
+                    <div class="component-row" data-category="psu">
                         <div class="component-icon"><i class="fas fa-bolt"></i></div>
                         <div class="component-details">
                             <h4>5. PSU - Nguồn</h4>
                             <div class="selected-item" id="selected-psu">Chưa chọn linh kiện</div>
-                        </div><button class="btn-select" data-type="psu">Chọn</button>
+                        </div><button class="btn-select" data-category="psu">Chọn</button>
                     </div>
                 </div>
                 <aside class="summary-panel">
@@ -86,11 +86,15 @@
         </div>
     </div>
 
-        <!-- Footer sẽ tự động được chèn vào đây -->
+    <!-- Footer sẽ tự động được chèn vào đây -->
     <footer-placeholder></footer-placeholder>
+    <!-- THÊM "VỊ TRÍ CHỜ" CHO GIỎ HÀNG VÀO ĐÂY -->
+    <aside id="cart-sidebar" class="cart-sidebar"></aside>
 
     <!-- SCRIPT: LUÔN ĐẶT Ở CUỐI BODY -->
-     <script src="js/data.js"></script> <!-- << Tải dữ liệu ĐẦU TIÊN -->
+    <script src="js/data.js"></script> <!-- << Tải dữ liệu ĐẦU TIÊN -->
+
+    <script src="js/cart.js"></script> <!-- << THÊM VÀO ĐÂY -->
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/builder.js"></script> <!-- Script riêng của trang builder -->

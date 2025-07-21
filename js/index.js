@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
     featuredProducts.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
+        productCard.dataset.id = product.id; // << THÊM DÒNG NÀY
         productCard.innerHTML = `
             <div class="product-image">
                 <img src="${product.image}" alt="${product.name}">

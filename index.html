@@ -133,17 +133,30 @@
             </div>
         </section> -->
 
-        <!-- ======================= BRANDS ======================= -->
+        <!-- ======================= BRANDS (Cấu trúc mới) ======================= -->
         <section class="brands section-padding">
             <div class="container">
                 <h2 class="section-title">Đối Tác Thương Hiệu</h2>
                 <div class="brand-logos">
-                    <img src="https://via.placeholder.com/150x60.png?text=Intel" alt="Intel">
-                    <img src="https://via.placeholder.com/150x60.png?text=AMD" alt="AMD">
-                    <img src="https://via.placeholder.com/150x60.png?text=NVIDIA" alt="NVIDIA">
-                    <img src="https://via.placeholder.com/150x60.png?text=Corsair" alt="Corsair">
-                    <img src="https://via.placeholder.com/150x60.png?text=ASUS" alt="ASUS">
-                    <img src="https://via.placeholder.com/150x60.png?text=GIGABYTE" alt="Gigabyte">
+                    <!-- Gói mỗi logo vào một div.brand-item -->
+                    <div class="brand-item">
+                        <img src="img/logo/intel.png" alt="Intel">
+                    </div>
+                    <div class="brand-item">
+                        <img src="img/logo/AMD.png" alt="AMD">
+                    </div>
+                    <div class="brand-item">
+                        <img src="img/logo/NVIDIA.png" alt="NVIDIA">
+                    </div>
+                    <div class="brand-item">
+                        <img src="img/logo/Corsair.png" alt="Corsair">
+                    </div>
+                    <div class="brand-item">
+                        <img src="img/logo/ASUS.png" alt="ASUS">
+                    </div>
+                    <div class="brand-item">
+                        <img src="img/logo/Gigabyte.png" alt="Gigabyte">
+                    </div>
                 </div>
             </div>
         </section>
@@ -153,12 +166,15 @@
     <!-- ======================= FOOTER ======================= -->
     <footer-placeholder></footer-placeholder>
 
+    <!-- THÊM "VỊ TRÍ CHỜ" CHO GIỎ HÀNG VÀO ĐÂY -->
+    <aside id="cart-sidebar" class="cart-sidebar"></aside>
+
     <!-- SCRIPT -->
-
-
 
     <!-- 2. Tải các component Header/Footer -->
     <script src="js/data.js"></script> <!-- << Tải dữ liệu ĐẦU TIÊN -->
+    <script src="js/cart.js"></script> <!-- << THÊM VÀO ĐÂY -->
+
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
 

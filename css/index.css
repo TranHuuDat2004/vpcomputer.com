@@ -313,27 +313,54 @@
 }
 
 
-/* ======================= BRANDS ======================= */
+.brands {
+    /* Đặt nền trắng cho cả section để logo nổi bật */
+    background-color: var(--bg-light); 
+}
+
 .brand-logos {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; /* Căn giữa toàn bộ nhóm logo */
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.brand-logos img {
-    height: 40px;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-    filter: grayscale(100%) invert(100%);
+.brand-item {
+    /* Tạo ra các ô có kích thước đều nhau */
+    width: 160px;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    
+    /* Dùng flexbox để căn giữa logo bên trong ô */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.brand-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.brand-logos img:hover {
+.brand-item img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto; /* Để chiều cao tự động theo tỉ lệ */
+    
+    /* BỎ CÁC HIỆU ỨNG FILTER CŨ */
+    filter: grayscale(100%); /* Giữ hiệu ứng đen trắng */
+    opacity: 0.6;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.brand-item:hover img {
+    filter: none; /* Bỏ hiệu ứng đen trắng khi hover */
     opacity: 1;
-    filter: none;
 }
-
 /* ======================= RESPONSIVE DESIGN (RIÊNG) ======================= */
 @media (max-width: 992px) {
     .hero h1 { font-size: 2.8rem; }
