@@ -1,0 +1,259 @@
+/* css/login.css (Phiên bản đã sửa lỗi tràn màn hình) */
+
+body {
+    font-family: var(--font-family, 'Roboto', sans-serif);
+    background-color: var(--bg-dark, #f4f6f8);
+    color: var(--text-primary, #212529);
+    line-height: 1.6;
+    /* THÊM: Ngăn cuộn toàn bộ trang */
+    overflow: hidden;
+}
+
+/* --- Khối bao bọc toàn trang --- */
+.auth-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Khối chính chứa cả slider và form --- */
+.auth-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 700px;
+    max-height: 90vh;
+    background-color: var(--bg-light);
+    border-radius: 20px;
+    /* SỬA LỖI: Giảm độ đậm và độ lan tỏa của bóng đổ */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    /* << THAY ĐỔI DÒNG NÀY */
+    overflow: hidden;
+}
+
+.auth-slider-panel,
+.auth-form-panel {
+    width: 50%;
+    /* << MỖI CỘT CHIẾM ĐÚNG 50% */
+    height: 100%;
+    position: relative;
+    /* Thêm để kiểm soát tốt hơn */
+    overflow: hidden;
+    /* Ngăn nội dung tràn ra ngoài */
+}
+
+
+/* --- Phần SLIDER bên trái --- */
+.auth-slider-panel {
+    display: none;
+    /* Vẫn ẩn trên mobile */
+    border-radius: 20px 0 0 20px;
+    /* Bo góc cho khớp */
+}
+
+.login-slider {
+    width: 100%;
+    height: 100%;
+}
+
+/* ... các style slider còn lại giữ nguyên ... */
+.login-slider .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.login-slider .slide.active {
+    opacity: 1;
+}
+
+.login-slider .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* --- Phần form bên phải --- */
+.auth-form-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.form-logo {
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.form-logo span {
+    color: var(--primary-color);
+}
+
+/* ... các style còn lại của form giữ nguyên ... */
+.form-box {
+    display: none;
+    text-align: left;
+}
+
+.form-box.active {
+    display: block;
+}
+
+.form-box h1 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--bg-dark);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    filter: brightness(1.1);
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--text-secondary);
+    margin: 30px 0;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.separator:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+    margin-left: .25em;
+}
+
+.social-login {
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: background-color 0.3s;
+}
+
+.social-btn:hover {
+    background-color: var(--bg-dark);
+}
+
+.form-footer {
+    margin-top: 30px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.form-footer a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+.form-footer .forgot-password {
+    display: block;
+    margin-bottom: 15px;
+}
+
+
+/* --- Responsive --- */
+@media (min-width: 992px) {
+    .auth-container {
+        width: 80%;
+    }
+
+    .auth-slider-panel {
+        display: block;
+    }
+}
+
+@media (max-width: 991px) {
+
+    /* Sửa lại để form chiếm 100% của container */
+    .auth-container {
+        height: auto;
+        /* Chiều cao tự động theo nội dung */
+        min-height: auto;
+    }
+
+    .auth-form-panel {
+        width: 100%;
+    }
+}

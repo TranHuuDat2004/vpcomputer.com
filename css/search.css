@@ -1,0 +1,23 @@
+/* css/search.css */
+.search-header {
+    text-align: center;
+    margin: 40px 0;
+}
+.search-header h1 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+.search-header p {
+    color: var(--text-secondary);
+}
+#search-query {
+    color: var(--primary-color);
+}
+/* Tái sử dụng .product-grid và .product-card từ các file CSS khác */
+.product-grid { /* Đảm bảo có grid layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding-bottom: 60px;
+}
+/* ... (Bạn có thể copy style của .product-card vào đây nếu cần) */

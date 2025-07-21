@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khuyến Mãi Sốc - VP Computer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Thư viện Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/promotion.css">
+</head>
+<body>
+
+    <header-placeholder></header-placeholder>
+
+    <main class="promo-page-container">
+        <!-- ======================= KHỐI KHUYẾN MÃI 1: MAIN - VGA ======================= -->
+        <section class="promo-block">
+            <!-- Banner bên trái -->
+            <div class="promo-banner-side">
+                <img src="https://via.placeholder.com/300x450/3498db/ffffff?text=MAIN+-+VGA" alt="Combo Main VGA">
+            </div>
+            <!-- Slider sản phẩm bên phải -->
+            <div class="promo-slider-side">
+                <!-- Cấu trúc Swiper -->
+                <div class="swiper promo-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide">
+                            <div class="product-card" data-id="vga1">
+                                <div class="sale-tag">Giảm 10%</div>
+                                <div class="product-image"><img src="img/product/GIGABYTE RTX 3060 12GB.jpg" alt="RTX 3060"></div>
+                                <div class="product-info">
+                                    <h3 class="product-name">GIGABYTE RTX 3060 12GB</h3>
+                                    <p class="product-price"><span class="new-price">7.490.000₫</span><span class="old-price">8.290.000₫</span></p>
+                                    <button class="btn btn-secondary">Thêm vào giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div class="product-card" data-id="vga2">
+                                <div class="sale-tag">Giảm 5%</div>
+                                <div class="product-image"><img src="img/product/ASUS TUF RTX 4070 Ti 12GB.jpg" alt="RTX 4070 Ti"></div>
+                                <div class="product-info">
+                                    <h3 class="product-name">ASUS TUF RTX 4070 Ti 12GB</h3>
+                                    <p class="product-price"><span class="new-price">21.290.000₫</span><span class="old-price">22.490.000₫</span></p>
+                                    <button class="btn btn-secondary">Thêm vào giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Thêm 4-5 slide sản phẩm VGA/Mainboard khác ở đây -->
+                    </div>
+                </div>
+                <!-- Nút điều hướng -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+        <div class="view-more-container">
+            <a href="#" class="view-more-btn"><i class="fas fa-bolt"></i> XEM THÊM DEAL SHOCK</a>
+        </div>
+
+
+        <!-- ======================= KHỐI KHUYẾN MÃI 2: MAIN - CPU ======================= -->
+        <section class="promo-block">
+            <!-- Banner bên trái -->
+            <div class="promo-banner-side">
+                <img src="https://via.placeholder.com/300x450/e74c3c/ffffff?text=MAIN+-+CPU" alt="Combo Main CPU">
+            </div>
+            <!-- Slider sản phẩm bên phải -->
+            <div class="promo-slider-side">
+                <!-- Cấu trúc Swiper -->
+                <div class="swiper promo-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide">
+                            <div class="product-card" data-id="cpu1">
+                                <div class="sale-tag">Giảm 2%</div>
+                                <div class="product-image"><img src="img/product/Intel Core i5-13400F.jpg" alt="i5 13400F"></div>
+                                <div class="product-info">
+                                    <h3 class="product-name">Intel Core i5-13400F</h3>
+                                    <p class="product-price"><span class="new-price">5.390.000₫</span><span class="old-price">5.490.000₫</span></p>
+                                    <button class="btn btn-secondary">Thêm vào giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                           <div class="product-card" data-id="cpu3">
+                                <div class="sale-tag">Giảm 4%</div>
+                                <div class="product-image"><img src="img/product/AMD Ryzen 5 7600X.jpg" alt="Ryzen 5 7600X"></div>
+                                <div class="product-info">
+                                    <h3 class="product-name">AMD Ryzen 5 7600X</h3>
+                                    <p class="product-price"><span class="new-price">5.990.000₫</span><span class="old-price">6.200.000₫</span></p>
+                                    <button class="btn btn-secondary">Thêm vào giỏ</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Thêm 4-5 slide sản phẩm CPU/Mainboard khác ở đây -->
+                    </div>
+                </div>
+                <!-- Nút điều hướng -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+        <div class="view-more-container">
+            <a href="#" class="view-more-btn"><i class="fas fa-bolt"></i> XEM THÊM DEAL SHOCK</a>
+        </div>
+    </main>
+    
+    <footer-placeholder></footer-placeholder>
+    <aside id="cart-sidebar" class="cart-sidebar"></aside>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/promotion.js"></script> <!-- File JS mới -->
+
+</body>
+</html>

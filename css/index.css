@@ -361,14 +361,102 @@
     filter: none; /* Bỏ hiệu ứng đen trắng khi hover */
     opacity: 1;
 }
-/* ======================= RESPONSIVE DESIGN (RIÊNG) ======================= */
+/* ======================= RESPONSIVE DESIGN (RIÊNG) - ĐÃ NÂNG CẤP ======================= */
+
+/* --- Tablet (Từ 992px trở xuống) --- */
 @media (max-width: 992px) {
-    .hero h1 { font-size: 2.8rem; }
+    /* Điều chỉnh slider cho gọn hơn */
+    .slider-section-wrapper {
+        padding: 15px 0;
+    }
+    .nav-tab {
+        padding: 10px 15px;
+    }
+    .nav-tab h4 {
+        font-size: 13px;
+    }
+    .nav-tab p {
+        font-size: 11px;
+    }
+    
+    /* Hiển thị 3 sản phẩm/hàng trên tablet */
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
+
+/* --- Mobile (Từ 768px trở xuống) --- */
 @media (max-width: 768px) {
-    .section-title { font-size: 2rem; }
-    .hero h1 { font-size: 2.2rem; }
-    .hero p { font-size: 1rem; }
-    .product-grid { grid-template-columns: 1fr; }
+    /* Tinh chỉnh lại slider */
+    .slider-container {
+        border-radius: 0; /* Bỏ bo góc trên mobile để tràn viền */
+    }
+    .slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    .nav-tabs {
+        flex-wrap: wrap; /* Cho phép các tab xuống dòng nếu không đủ chỗ */
+        gap: 5px;
+        padding: 5px;
+        border-radius: 0;
+    }
+    .nav-tab {
+        flex-basis: calc(50% - 10px); /* Mỗi tab chiếm gần 1 nửa chiều rộng */
+        padding: 8px;
+        border-top: none;
+    }
+    .nav-tab.active::after {
+        bottom: -5px; /* Điều chỉnh lại vị trí gạch chân */
+    }
+    
+    /* Tiêu đề section */
+    .section-title { 
+        font-size: 2rem; 
+    }
+
+    /* === HIỂN THỊ 2 SẢN PHẨM/HÀNG TRÊN MOBILE === */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    /* === TINH CHỈNH LẠI CARD SẢN PHẨM CHO GỌN HƠN (ĐỒNG BỘ VỚI TRANG PRODUCT) === */
+    .product-card .product-image img {
+        height: 150px;
+    }
+    .product-card .product-info {
+        padding: 15px;
+    }
+    .product-card .product-name {
+        font-size: 0.9rem;
+        min-height: 40px;
+        margin-bottom: 8px;
+    }
+    .product-card .product-price {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    .product-card .btn-secondary {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    /* Danh mục */
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 danh mục/hàng */
+        gap: 10px;
+    }
+    .category-item {
+        padding: 15px 10px;
+    }
+    .category-item i {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    .category-item span {
+        font-size: 0.8rem;
+    }
 }

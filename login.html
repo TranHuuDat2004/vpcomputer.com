@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập / Đăng Ký - VP Computer</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <!-- Thêm một khối bao bọc bên ngoài auth-container -->
+    <div class="auth-page-wrapper">
+        <div class="auth-container">
+            <!-- Phần SLIDER bên trái - Đã cập nhật cấu trúc -->
+            <div class="auth-slider-panel">
+                <div class="slider-container login-slider"> <!-- Thêm class 'login-slider' -->
+                    <div class="slider-wrapper">
+                        <!-- Các slide ảnh sản phẩm -->
+                        <div class="slide"><img src="img/product/MSI RTX 4090 SUPRIM X 24G.jpg" alt="RTX 4090"></div>
+                        <div class="slide"><img src="img/product/Intel Core i5-13400F.jpg" alt="i5-13400F"></div>
+                        <div class="slide"><img src="img/product/GIGABYTE Z790 AORUS ELITE AX.jpg" alt="Z790 AORUS">
+                        </div>
+                        <div class="slide"><img src="img/product/Corsair Vengeance 16GB Bus 3200.jpg" alt="Corsair RAM">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phần form bên phải -->
+            <div class="auth-form-panel">
+                <div class="form-wrapper">
+                    <!-- Logo được chuyển vào đây -->
+                    <a href="index.html" class="form-logo">VP <span>Computer</span></a>
+                    <!-- Form Đăng Nhập -->
+                    <div class="form-box login active">
+                        <h1>Đăng Nhập</h1>
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="login-email">Email</label>
+                                <input type="email" id="login-email" placeholder="Nhập email của bạn" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">Mật khẩu</label>
+                                <input type="password" id="login-password" placeholder="••••••••••" required>
+                            </div>
+                            <button type="submit" class="btn-submit">Đăng Nhập</button>
+                        </form>
+                        <div class="separator"><span>Hoặc đăng nhập với</span></div>
+                        <div class="social-login">
+                            <a href="#" class="social-btn google"><i class="fab fa-google"></i> Google</a>
+                            <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        </div>
+                        <div class="form-footer">
+                            <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                            <p>Chưa có tài khoản? <a href="signup.html" class="toggle-link" data-target="register">Tạo tài
+                                    khoản</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Loại bỏ Swiper.js, thay bằng login.js -->
+    <script src="js/login.js"></script>
+</body>
+
+</html>

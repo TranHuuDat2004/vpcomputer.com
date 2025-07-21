@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kết Quả Tìm Kiếm - VP Computer</title>
+    <!-- Các link CSS chung -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/search.css">
+</head>
+<body>
+    <header-placeholder></header-placeholder>
+    <main>
+        <div class="container">
+            <div class="search-header">
+                <h1>Kết quả tìm kiếm cho: "<span id="search-query"></span>"</h1>
+                <p><span id="result-count">0</span> sản phẩm được tìm thấy</p>
+            </div>
+            <div id="search-results-grid" class="product-grid">
+                <!-- Kết quả sẽ được JS chèn vào đây -->
+            </div>
+        </div>
+    </main>
+    <footer-placeholder></footer-placeholder>
+    <aside id="cart-sidebar" class="cart-sidebar"></aside>
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

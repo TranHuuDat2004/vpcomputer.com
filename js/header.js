@@ -15,31 +15,35 @@ class HeaderComponent extends HTMLElement {
                 <div class="container">
                     <a href="index.html" class="logo">${brandName.split(' ')[0]} <span>${brandName.split(' ').slice(1).join(' ')}</span></a>
                     
-                    <nav class="main-nav desktop-nav">
-                        <!-- Menu desktop không đổi -->
+<nav class="main-nav desktop-nav">
                         <ul>
                             <li><a href="index.html">Trang Chủ</a></li>
                             <li><a href="product.html">Sản Phẩm</a></li>
                             <li><a href="builder.html">Xây Dựng Cấu Hình</a></li>
-                            <li><a href="#">Khuyến Mãi</a></li>
-                            <li><a href="#">Liên Hệ</a></li>
+                            <li><a href="promotion.html">Khuyến Mãi</a></li> <!-- << ĐÃ SỬA -->
+                            <li><a href="contact.html">Liên Hệ</a></li>       <!-- << ĐÃ SỬA -->
                         </ul>
                     </nav>
 
                     <div class="header-actions">
-                <form action="#" class="search-bar">
-                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
-                    <button type="submit"><i class="fas fa-search"></i></button>
-                </form>
-                <a href="#" class="action-icon"><i class="fas fa-user"></i></a>
-                <a href="#" class="action-icon cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">3</span>
-                </a>
-            </div>
+                        <!-- SỬA LỖI: Form tìm kiếm bây giờ sẽ chuyển hướng đến search.html -->
+                        <form action="search.html" method="GET" class="search-bar" id="search-form">
+                            <input type="text" name="q" placeholder="Tìm kiếm sản phẩm..." required>
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                        
+                        <a href="#" class="action-icon cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+
+                        <!-- THAY ĐỔI: Thay icon user bằng nút Login/Register -->
+                        <div class="user-auth">
+                           <a href="login.html" class="auth-link"><i class="fas fa-user"></i> Đăng nhập / Đăng ký</a>
+                        </div>
 
 
-                        <!-- Nút Hamburger cho Mobile -->
+
                         <button class="hamburger-btn" id="hamburger-btn">
                             <i class="fas fa-bars"></i>
                         </button>
@@ -56,8 +60,8 @@ class HeaderComponent extends HTMLElement {
                         <li><a href="index.html"><i class="fas fa-home"></i> Trang Chủ</a></li>
                         <li><a href="product.html"><i class="fas fa-box"></i> Sản Phẩm</a></li>
                         <li><a href="builder.html"><i class="fas fa-cogs"></i> Xây Dựng Cấu Hình</a></li>
-                        <li><a href="#"><i class="fas fa-tags"></i> Khuyến Mãi</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> Liên Hệ</a></li>
+                        <li><a href="promotion.html"><i class="fas fa-tags"></i> Khuyến Mãi</a></li> <!-- << ĐÃ SỬA -->
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Liên Hệ</a></li> <!-- << ĐÃ SỬA -->
                     </ul>
                     <div class="mobile-nav-footer">
                          <a href="#"><i class="fas fa-headset"></i> Lắp đặt phòng net</a>

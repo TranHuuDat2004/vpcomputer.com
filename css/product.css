@@ -171,27 +171,76 @@
     margin-bottom: 15px;
 }
 
-/* --- Responsive --- */
+/* --- Responsive (ĐÃ NÂNG CẤP HOÀN CHỈNH) --- */
+
+/* --- Tablet (Từ 992px trở xuống) --- */
 @media (max-width: 992px) {
+    /* Layout chính vẫn là 2 cột */
+    .product-page-layout {
+        gap: 20px;
+    }
+    /* Giảm chiều rộng của sidebar một chút */
+    #filter-sidebar {
+        flex: 0 0 220px;
+    }
+    /* Sản phẩm hiển thị 2 cột thay vì 3 */
     #product-grid-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
+
+/* --- Mobile (Từ 768px trở xuống) --- */
 @media (max-width: 768px) {
+    /* Header của trang */
     .page-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
+        margin: 20px 0; /* Giảm khoảng cách */
     }
+    .page-header h1 {
+        font-size: 2rem; /* Giảm kích thước tiêu đề */
+    }
+
+    /* Chuyển layout chính thành 1 cột */
     .product-page-layout {
         flex-direction: column;
     }
+    
+    /* === SỬA LỖI THANH LỌC BỊ DÍNH === */
     #filter-sidebar {
-        flex: 1;
         width: 100%;
+        position: static; /* << TẮT HIỆU ỨNG STICKY TRÊN MOBILE */
+        top: auto;
+        margin-bottom: 30px; /* Thêm khoảng cách với lưới sản phẩm */
     }
+
+    /* === SỬA LỖI HIỂN THỊ 1 SẢN PHẨM/HÀNG === */
     #product-grid-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* << HIỂN THỊ 2 CỘT TRÊN MOBILE */
+        gap: 15px; /* Giảm khoảng cách giữa các sản phẩm */
+    }
+
+    /* === SỬA LỖI ẢNH QUÁ TO VÀ TINH CHỈNH CARD SẢN PHẨM === */
+    .product-card .product-image img {
+        height: 150px; /* << GIẢM CHIỀU CAO CỦA ẢNH */
+    }
+    .product-card .product-info {
+        padding: 15px; /* Giảm padding */
+    }
+    .product-card .product-name {
+        font-size: 0.9rem; /* Giảm kích thước font */
+        min-height: 40px; /* Giữ 2 dòng cho tên */
+        margin-bottom: 8px;
+    }
+    .product-card .product-price {
+        font-size: 1.1rem; /* Giảm kích thước font */
+        margin-bottom: 10px;
+    }
+    .product-card .btn-secondary {
+        padding: 8px 15px; /* Giảm kích thước nút */
+        font-size: 0.9rem;
     }
 }

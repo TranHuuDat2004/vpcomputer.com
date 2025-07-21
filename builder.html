@@ -24,40 +24,61 @@
             <h1 class="builder-title">Xây Dựng Cấu Hình PC Của Bạn</h1>
             <div class="builder-layout">
                 <div class="component-selector">
+                    <!-- Thêm data-title vào đây -->
                     <div class="component-row" data-category="cpu">
-                        <div class="component-icon"><i class="fas fa-microchip"></i></div>
+                        <div class="component-icon" data-title="1. CPU - Vi xử lý">
+                            <i class="fas fa-microchip"></i>
+                        </div>
                         <div class="component-details">
                             <h4>1. CPU - Vi xử lý</h4>
                             <div class="selected-item" id="selected-cpu">Chưa chọn linh kiện</div>
-                        </div><button class="btn-select" data-category="cpu">Chọn</button>
+                        </div>
+                        <button class="btn-select" data-category="cpu">Chọn</button>
                     </div>
+
+                    <!-- Tương tự cho các dòng còn lại -->
                     <div class="component-row" data-category="mainboard">
-                        <div class="component-icon"><i class="fas fa-server"></i></div>
+                        <div class="component-icon" data-title="2. Mainboard - Bo mạch chủ">
+                            <i class="fas fa-server"></i>
+                        </div>
                         <div class="component-details">
                             <h4>2. Mainboard - Bo mạch chủ</h4>
                             <div class="selected-item" id="selected-mainboard">Chưa chọn linh kiện</div>
-                        </div><button class="btn-select" data-category="mainboard">Chọn</button>
+                        </div>
+                        <button class="btn-select" data-category="mainboard">Chọn</button>
                     </div>
+
                     <div class="component-row" data-category="ram">
-                        <div class="component-icon"><i class="fas fa-memory"></i></div>
+                        <div class="component-icon" data-title="3. RAM">
+                            <i class="fas fa-memory"></i>
+                        </div>
                         <div class="component-details">
                             <h4>3. RAM</h4>
                             <div class="selected-item" id="selected-ram">Chưa chọn linh kiện</div>
-                        </div><button class="btn-select" data-category="ram">Chọn</button>
+                        </div>
+                        <button class="btn-select" data-category="ram">Chọn</button>
                     </div>
+
                     <div class="component-row" data-category="vga">
-                        <div class="component-icon"><i class="fas fa-gamepad"></i></div>
+                        <div class="component-icon" data-title="4. VGA - Card đồ họa">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
                         <div class="component-details">
                             <h4>4. VGA - Card đồ họa</h4>
                             <div class="selected-item" id="selected-vga">Chưa chọn linh kiện</div>
-                        </div><button class="btn-select" data-category="vga">Chọn</button>
+                        </div>
+                        <button class="btn-select" data-category="vga">Chọn</button>
                     </div>
+
                     <div class="component-row" data-category="psu">
-                        <div class="component-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="component-icon" data-title="5. PSU - Nguồn">
+                            <i class="fas fa-bolt"></i>
+                        </div>
                         <div class="component-details">
                             <h4>5. PSU - Nguồn</h4>
                             <div class="selected-item" id="selected-psu">Chưa chọn linh kiện</div>
-                        </div><button class="btn-select" data-category="psu">Chọn</button>
+                        </div>
+                        <button class="btn-select" data-category="psu">Chọn</button>
                     </div>
                 </div>
                 <aside class="summary-panel">
