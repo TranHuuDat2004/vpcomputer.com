@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- KẾT THÚC ĐOẠN CODE MỚI ---
     // Gắn sự kiện cho các bộ lọc còn lại
     priceFilter.addEventListener('change', applyFilters);
     brandFilter.addEventListener('change', applyFilters);
@@ -128,6 +129,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===============================================
     // KHỞI TẠO TRANG
     // ===============================================
+
+    // --- THÊM ĐOẠN CODE NÀY VÀO ---
+    function checkUrlForCategory() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryFromUrl = urlParams.get('category');
+
+        if (categoryFromUrl) {
+            // Tìm link danh mục tương ứng
+            const targetLink = categoryFilter.querySelector(`a[data-category="${categoryFromUrl}"]`);
+            if (targetLink) {
+                // "Click" giả vào link đó để kích hoạt bộ lọc
+                targetLink.click();
+            }
+        }
+    }
+    // --- KẾT THÚC ĐOẠN CODE MỚI ---
+
     populateBrandFilter(); // Tạo các checkbox thương hiệu
-    applyFilters(); // Hiển thị tất cả sản phẩm ban đầu
+    checkUrlForCategory(); // << GỌI HÀM MỚI Ở ĐÂY
+    applyFilters(); // Hiển thị sản phẩm ban đầu
 });
