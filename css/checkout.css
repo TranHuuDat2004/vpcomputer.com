@@ -1,0 +1,244 @@
+/* css/checkout.css (Phiên bản nâng cấp) */
+
+body {
+    background-color: var(--bg-dark);
+    font-family: var(--font-family);
+    color: var(--text-secondary);
+}
+.checkout-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Cột thông tin khách hàng (bên trái) --- */
+.customer-info {
+    flex-basis: 55%;
+    padding: 40px;
+    display: flex;
+    justify-content: flex-end; /* Đẩy nội dung về bên phải */
+}
+.info-wrapper {
+    width: 100%;
+    max-width: 550px;
+}
+.checkout-logo {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-bottom: 40px;
+    display: block;
+}
+.checkout-logo span {
+    color: var(--primary-color);
+}
+.customer-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--text-primary);
+}
+.checkout-form .form-row {
+    display: flex;
+    gap: 20px;
+}
+.checkout-form .form-group {
+    flex: 1;
+    margin-bottom: 20px;
+}
+.form-group.floating-label {
+    position: relative;
+}
+.form-group.floating-label input,
+.form-group.floating-label textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+}
+.form-group.floating-label label {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    color: var(--text-secondary);
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+/* Hiệu ứng floating label */
+.form-group.floating-label input:focus + label,
+.form-group.floating-label input:not(:placeholder-shown) + label,
+.form-group.floating-label textarea:focus + label,
+.form-group.floating-label textarea:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.8rem;
+    background-color: var(--bg-light); /* Cùng màu nền để che đường viền */
+    padding: 0 5px;
+    color: var(--primary-color);
+}
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.payment-option {
+    display: block;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+}
+.payment-option input[type="radio"] {
+    display: none; /* Ẩn radio button gốc */
+}
+.payment-option .option-content {
+    display: flex;
+    align-items: center;
+}
+.payment-option .option-content::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    margin-right: 15px;
+    transition: border-color 0.2s;
+}
+.payment-option input[type="radio"]:checked + .option-content::before {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    box-shadow: inset 0 0 0 3px var(--bg-light);
+}
+
+/* --- Cột tóm tắt đơn hàng (bên phải) --- */
+.order-summary-checkout {
+    flex-basis: 45%;
+    background-color: #f0f2f5; /* Màu nền xám nhạt hơn */
+    padding: 40px;
+    display: flex;
+}
+.summary-wrapper {
+    width: 100%;
+    max-width: 450px;
+}
+.order-summary-checkout h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+/* Đoạn code mới đã được nâng cấp */
+
+.summary-items {
+    max-height: 400px; /* Chiều cao tối đa, có thể cuộn */
+    overflow-y: auto;
+    /* Tùy chỉnh thanh cuộn cho đẹp hơn (tùy chọn) */
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+.summary-items::-webkit-scrollbar { width: 6px; }
+.summary-items::-webkit-scrollbar-track { background: transparent; }
+.summary-items::-webkit-scrollbar-thumb { background-color: var(--border-color); border-radius: 6px; }
+
+.summary-item {
+    display: grid; /* Sử dụng Grid Layout để căn chỉnh cột */
+    grid-template-columns: auto 1fr auto; /* 3 cột: Ảnh | Tên & Giá | Thành tiền */
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+.summary-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.item-thumbnail {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+}
+.item-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fff;
+}
+.item-quantity {
+    position: absolute;
+    /* SỬA LỖI VỊ TRÍ: Căn chỉnh lại badge số lượng */
+    top: -8px;
+    right: -8px; 
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 2px solid var(--bg-light); /* Thêm viền trắng để nổi bật */
+}
+
+.item-details { /* Khối mới chứa Tên và Đơn giá */
+    display: flex;
+    flex-direction: column;
+}
+.item-details .item-name {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.item-details .item-unit-price { /* Style mới cho Đơn giá */
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.item-subtotal { /* Style mới cho cột Thành tiền */
+    font-weight: 500;
+    white-space: nowrap; /* Ngăn không xuống dòng */
+    text-align: right;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem; /* Tăng kích thước cho nổi bật */
+    border-top: 1px solid #ccc; /* Đường kẻ đậm hơn một chút */
+    padding-top: 20px;
+    margin-top: 20px;
+}
+.btn-place-order {
+    width: 100%;
+    padding: 18px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .checkout-container {
+        flex-direction: column-reverse; /* Đảo ngược thứ tự trên mobile */
+    }
+    .customer-info, .order-summary-checkout {
+        flex-basis: auto;
+        padding: 20px;
+    }
+    .info-wrapper, .summary-wrapper {
+        max-width: 100%;
+    }
+    .checkout-form .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

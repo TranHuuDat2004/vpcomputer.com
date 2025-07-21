@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span>Tổng cộng:</span>
                         <span>${total.toLocaleString('vi-VN')}₫</span>
                     </div>
-                    <a href="#" class="btn-cart-view">Xem Giỏ Hàng</a>
-                    <a href="#" class="btn-cart-checkout">Thanh Toán</a>
+<a href="cart.html" class="btn-cart-view">Xem Giỏ Hàng</a>
+<a href="checkout.html" class="btn-cart-checkout">Thanh Toán</a>
                 </div>
             `;
         }
@@ -91,15 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         attachCartEvents();
     }
-    
+
     // Gán hàm addToCart cục bộ vào biến addToCart toàn cục
-    addToCart = function(productId) {
+    addToCart = function (productId) {
         const productToAdd = allProducts.find(p => p.id === productId);
         if (!productToAdd) {
             console.error(`Không tìm thấy sản phẩm với ID: ${productId}`);
             return;
         }
-        
+
         let newCart = [...cart];
         const existingItemIndex = newCart.findIndex(item => item.id === productId);
 
@@ -108,23 +108,23 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             newCart.push({ ...productToAdd, quantity: 1 });
         }
-        
+
         updateCartAndSave(newCart);
     }
-    
+
     // Gán hàm openCart cục bộ vào biến openCart toàn cục
-    openCart = function() {
+    openCart = function () {
         renderCart(); // Luôn render lại trước khi mở để đảm bảo dữ liệu mới nhất
         cartSidebar.classList.add('active');
         document.body.classList.add('no-scroll');
     }
-    
+
     // Hàm xóa sản phẩm khỏi giỏ
     function removeFromCart(productId) {
         const newCart = cart.filter(item => item.id !== productId);
         updateCartAndSave(newCart);
     }
-    
+
     // Hàm đóng giỏ hàng
     function closeCart() {
         cartSidebar.classList.remove('active');
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===============================================
     // PHẦN 3: GẮN SỰ KIỆN CHUNG
     // ===============================================
-    
+
     // Sự kiện click vào icon giỏ hàng trên header
     cartIcon.addEventListener('click', (e) => {
         e.preventDefault();
@@ -179,6 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // KHỞI TẠO BAN ĐẦU
     // ===============================================
     const initialCart = loadCartFromLocalStorage();
-    updateCartAndSave(initialCart); 
+    updateCartAndSave(initialCart);
 
 });

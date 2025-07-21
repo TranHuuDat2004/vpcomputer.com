@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - VP Computer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <div class="checkout-container">
+        <!-- Cột thông tin khách hàng -->
+        <div class="customer-info">
+            <div class="info-wrapper">
+                <a href="index.html" class="checkout-logo">VP <span>Computer</span></a>
+                
+                <h2>Thông Tin Giao Hàng</h2>
+                <form action="#" class="checkout-form" id="checkout-form">
+                    <div class="form-row">
+                        <div class="form-group floating-label">
+                            <input type="text" id="fullname" name="fullname" placeholder=" " required>
+                            <label for="fullname">Họ và tên</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                         <div class="form-group floating-label">
+                            <input type="email" id="email" name="email" placeholder=" " required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-group floating-label">
+                            <input type="tel" id="phone" name="phone" placeholder=" " required>
+                            <label for="phone">Số điện thoại</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group floating-label">
+                            <textarea id="address" name="address" placeholder=" " rows="3" required></textarea>
+                            <label for="address">Địa chỉ chi tiết</label>
+                        </div>
+                    </div>
+                </form>
+
+                <h2>Phương Thức Thanh Toán</h2>
+                <div class="payment-methods">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="cod" checked>
+                        <div class="option-content">
+                            <span>Thanh toán khi nhận hàng (COD)</span>
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="bank">
+                        <div class="option-content">
+                            <span>Chuyển khoản ngân hàng</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cột tóm tắt đơn hàng -->
+        <div class="order-summary-checkout">
+            <div class="summary-wrapper">
+                <h3>Đơn Hàng Của Bạn</h3>
+                <div class="summary-items" id="summary-items">
+                    <!-- Sản phẩm sẽ được JS chèn vào đây -->
+                </div>
+                <div class="summary-total">
+                    <span>Tổng cộng</span>
+                    <strong id="summary-total-price">0₫</strong>
+                </div>
+                <button type="submit" form="checkout-form" class="btn-place-order">Hoàn Tất Đơn Hàng</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Nhúng thư viện jsPDF và file script của trang -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>
