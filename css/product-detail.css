@@ -1,0 +1,86 @@
+/* css/product-detail.css */
+#product-detail-container {
+    padding: 40px 0;
+}
+.product-detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    background-color: var(--bg-light);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.product-gallery img {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+.product-info h1 {
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+.product-price-box {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.product-price-box .price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+.add-to-cart-section {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+.quantity-input {
+    width: 80px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1.2rem;
+}
+.btn-add-to-cart {
+    flex-grow: 1;
+    padding: 15px;
+    font-size: 1.1rem;
+    /* ... các style khác từ .btn ... */
+}
+.product-description {
+    margin-top: 30px;
+}
+.product-description h4 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+.product-description p, .product-description ul {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+.product-description ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+/* Spinner loading */
+.loading-spinner {
+    border: 5px solid var(--border-color);
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 100px auto;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+@media (max-width: 992px) {
+    .product-detail-layout {
+        grid-template-columns: 1fr;
+    }
+}

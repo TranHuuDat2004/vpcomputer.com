@@ -157,11 +157,25 @@
     flex-direction: column;
 }
 
+/* Đoạn code mới đã giới hạn tên sản phẩm */
 .product-card .product-name {
     font-size: 1.1rem;
     color: var(--text-primary);
+    font-weight: 500; /* Thêm độ đậm cho tên */
     margin-bottom: 10px;
-    flex-grow: 1;
+    
+    /* === KỸ THUẬT GIỚI HẠN DÒNG VÀ THÊM DẤU "..." === */
+    
+    /* 1. Đặt chiều cao tối thiểu để các card luôn đều nhau */
+    /* (font-size * line-height * số dòng) ~ (1.1 * 16px * 1.5 * 2) */
+    min-height: 52px; 
+    
+    /* 2. Các thuộc tính để giới hạn 2 dòng */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Số dòng tối đa */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-card .product-price {
@@ -169,6 +183,16 @@
     font-weight: 700;
     color: var(--accent-color);
     margin-bottom: 15px;
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    flex-grow: 1; /* Cho phép phần link co giãn để đẩy nút xuống dưới */
+}
+.product-actions {
+    /* Thêm padding cho khối chứa nút */
+    padding: 0 20px 20px 20px; /* Trên 0, Phải 20px, Dưới 20px, Trái 20px */
 }
 
 /* --- Responsive (ĐÃ NÂNG CẤP HOÀN CHỈNH) --- */
@@ -244,3 +268,5 @@
         font-size: 0.9rem;
     }
 }
+
+

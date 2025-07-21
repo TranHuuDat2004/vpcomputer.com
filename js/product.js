@@ -31,17 +31,22 @@ document.addEventListener('DOMContentLoaded', () => {
         productsToRender.forEach(product => {
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
-            productCard.dataset.id = product.id; // << THÊM DÒNG NÀY
+            productCard.dataset.id = product.id;
+            // SỬA LẠI THẺ BAO BỌC
             productCard.innerHTML = `
-                <div class="product-image">
-                    <img src="${product.image}" alt="${product.name}">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">${product.name}</h3>
-                    <p class="product-price">${product.price.toLocaleString('vi-VN')}₫</p>
-                    <button class="btn btn-secondary">Thêm vào giỏ</button>
-                </div>
-            `;
+        <a href="product-detail.html?id=${product.id}" class="product-link">
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">${product.name}</h3>
+                <p class="product-price">${product.price.toLocaleString('vi-VN')}₫</p>
+            </div>
+        </a>
+        <div class="product-actions">
+            <button class="btn btn-secondary">Thêm vào giỏ</button>
+        </div>
+    `;
             productGrid.appendChild(productCard);
         });
     }
