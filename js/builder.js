@@ -1,7 +1,7 @@
 // js/builder.js (Phiên bản đã sắp xếp lại và sửa lỗi)
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ===============================================
     // PHẦN 1: KHAI BÁO BIẾN VÀ TRẠNG THÁI
     // ===============================================
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let requiredWattage = 150;
             if (cpu) requiredWattage += cpu.attributes.wattage;
             if (vga) requiredWattage += vga.attributes.wattage;
-            
+
             if (psu.attributes.wattage >= requiredWattage) addMessage(`Nguồn ${psu.attributes.wattage}W đủ công suất (cần khoảng ${requiredWattage}W).`, 'success');
             else { addMessage(`CẢNH BÁO: Nguồn ${psu.attributes.wattage}W có thể không đủ công suất (cần ít nhất ${requiredWattage}W).`, 'error'); errors++; }
         }
@@ -97,9 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSelectingCategory = category;
         modal.style.display = 'block';
         modalTitle.textContent = `Chọn ${category.toUpperCase()}`;
-        
+
         const filteredProducts = allProducts.filter(p => p.category === category);
-        
+
         modalProductList.innerHTML = '';
         filteredProducts.forEach(product => {
             const itemEl = document.createElement('div');
@@ -111,6 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Hàm thêm cấu hình vào giỏ ---
+    // js/builder.js
+
+    // --- Hàm thêm cấu hình vào giỏ (PHIÊN BẢN MỚI) ---
     function addBuildConfigToCart() {
         const itemsToAdd = Object.values(currentBuild).filter(item => item !== null);
         if (itemsToAdd.length === 0) {
@@ -120,16 +123,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log("Chuẩn bị thêm các sản phẩm sau vào giỏ:", itemsToAdd);
 
+        // Gọi trực tiếp hàm addToCart từ cart.js
         itemsToAdd.forEach(item => {
-            // Kiểm tra xem hàm addToCart có tồn tại không (từ file cart.js)
+            // Kiểm tra xem hàm có tồn tại không để tránh lỗi
             if (typeof addToCart === 'function') {
                 addToCart(item.id);
+            } else {
+                console.error("Hàm addToCart không được định nghĩa!");
             }
         });
 
-        // Mở giỏ hàng sau khi thêm để người dùng xem
+        // Sau khi thêm TẤT CẢ, mới mở giỏ hàng MỘT LẦN
         if (typeof openCart === 'function') {
             openCart();
+        } else {
+            console.error("Hàm openCart không được định nghĩa!");
         }
     }
 
@@ -149,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeButton.addEventListener('click', closeModal);
     window.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
     addToCartButton.addEventListener('click', addBuildConfigToCart);
-    
+
     // Khởi tạo giao diện ban đầu
     updateUI();
 });
