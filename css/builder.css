@@ -1,0 +1,203 @@
+/* Sử dụng lại các biến màu từ file style.css */
+:root {
+    --bg-main: #f4f6f8;
+    --bg-card: #ffffff;
+    --primary-color: #007bff;
+    --accent-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --border-color: #dee2e6;
+}
+
+body {
+    background-color: var(--bg-main);
+}
+
+.builder-title {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--text-primary);
+}
+
+.builder-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.component-selector {
+    flex: 3; /* Chiếm 3/4 không gian */
+}
+
+.summary-panel {
+    flex: 1; /* Chiếm 1/4 không gian */
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    position: sticky;
+    top: 100px; /* Dính lại khi cuộn */
+}
+
+.component-row {
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.component-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-right: 20px;
+    width: 40px;
+    text-align: center;
+}
+
+.component-details {
+    flex-grow: 1;
+}
+
+.component-details h4 {
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.selected-item {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+.selected-item .price {
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.btn-select {
+    padding: 10px 25px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+.btn-select:hover {
+    background-color: #0056b3;
+}
+
+/* Summary Panel Styles */
+.summary-panel h3, .summary-panel h4 {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+#compatibility-messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+#compatibility-messages li {
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+#compatibility-messages li.success {
+    background-color: #e9f7ec;
+    color: var(--success-color);
+    border-left: 4px solid var(--success-color);
+}
+#compatibility-messages li.error {
+    background-color: #fdeaea;
+    color: var(--accent-color);
+    border-left: 4px solid var(--accent-color);
+}
+#compatibility-messages li.info {
+    background-color: #e7f3fe;
+    color: var(--primary-color);
+    border-left: 4px solid var(--primary-color);
+}
+
+
+#total-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-align: right;
+}
+
+.btn-add-to-cart {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+}
+.btn-add-to-cart:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    max-width: 700px;
+    border-radius: 8px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-product-list .product-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+}
+#modal-product-list .product-item:hover {
+    background-color: var(--bg-main);
+}
+#modal-product-list .product-item:last-child {
+    border-bottom: none;
+}

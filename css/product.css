@@ -1,0 +1,197 @@
+/* css/product.css (PHIÊN BẢN CHO THEME SÁNG) */
+
+/* Căn chỉnh lại Header của trang */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    margin: 40px 0; /* Thêm khoảng cách trên và dưới cho thoáng */
+}
+
+.page-header h1 {
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.sort-options select {
+    background-color: var(--bg-light);
+    color: var(--text-primary); /* Đổi sang màu chữ chính cho dễ đọc */
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.product-page-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Đoạn code mới đã thêm hiệu ứng trượt */
+#filter-sidebar {
+    flex: 0 0 250px;
+    background-color: var(--bg-light);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+    /* --- THÊM 2 DÒNG NÀY ĐỂ TẠO HIỆU ỨNG --- */
+    position: sticky;
+    top: 100px; /* Khoảng cách từ thanh lọc đến đỉnh màn hình khi dính lại */
+}
+
+#filter-sidebar h3 {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+#filter-sidebar h3 i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.filter-group {
+    margin-bottom: 25px;
+}
+
+.filter-group h4 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.filter-list {
+    list-style: none;
+    padding: 0;
+}
+
+.filter-list li {
+    margin-bottom: 10px;
+}
+
+/* Style cho các bộ lọc */
+.filter-list label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+}
+.filter-list input[type="radio"],
+.filter-list input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: var(--primary-color);
+}
+.filter-list a {
+    color: var(--text-secondary);
+    display: block;
+    padding: 5px 0;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+}
+.filter-list a:hover {
+    color: var(--primary-color);
+    background-color: #e9ecef; /* Thêm màu nền khi hover */
+}
+.filter-list a.active {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+
+/* --- Grid Sản Phẩm (Bên phải) --- */
+#product-grid-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+}
+.no-products {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    grid-column: 1 / -1; /* Cho phép text chiếm hết chiều rộng của grid */
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* --- Style Product Card (Đồng bộ với theme sáng) --- */
+.product-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.product-card .product-image {
+    position: relative;
+    background-color: #ffffff;
+}
+
+.product-card .product-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.product-card .product-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card .product-name {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+.product-card .product-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    #product-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .product-page-layout {
+        flex-direction: column;
+    }
+    #filter-sidebar {
+        flex: 1;
+        width: 100%;
+    }
+    #product-grid-container {
+        grid-template-columns: 1fr;
+    }
+}

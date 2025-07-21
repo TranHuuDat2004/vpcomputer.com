@@ -1,0 +1,347 @@
+/* css/index.css */
+
+.section-padding {
+    padding: 60px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* ======================= SLIDER SECTION WRAPPER ======================= */
+
+/* --- Khung chứa chính của slider --- */
+.slider-container {
+    max-width: 1200px; /* Chiều rộng tối đa của slider */
+    width: 100%;
+    position: relative; /* Quan trọng để định vị các nút bấm */
+    overflow: hidden; /* Ẩn các slide nằm ngoài khung nhìn */
+    border-radius: 8px; /* Bo tròn góc */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Thêm bóng đổ nhẹ */
+}
+
+/* --- Vùng chứa các ảnh, sẽ di chuyển sang trái/phải --- */
+.slider-wrapper {
+    display: flex; /* Xếp các slide nằm ngang */
+    transition: transform 0.5s ease-in-out; /* Tạo hiệu ứng chuyển động mượt mà */
+}
+
+/* --- Mỗi slide đơn lẻ --- */
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    display: block; /* Loại bỏ khoảng trắng thừa dưới ảnh */
+}
+
+/* --- Các nút bấm Trước/Sau --- */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    opacity: 0; /* Mặc định ẩn nút */
+}
+
+.slider-container:hover .slider-btn {
+    opacity: 1; /* Hiện nút khi di chuột vào slider */
+}
+
+.slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev-btn {
+    left: 15px;
+}
+
+.next-btn {
+    right: 15px;
+}
+
+
+
+
+.slider-section-wrapper {
+    max-width: 1200px; /* Chiều rộng tối đa giống thiết kế gốc */
+    margin: 0 auto;    /* Tự động căn giữa khối theo chiều ngang */
+    padding: 20px 0;   /* Tạo một chút khoảng trống trên và dưới */
+}
+
+/* --- Khung chứa chính của slider --- */
+.slider-container {
+    /* Bỏ max-width ở đây đi vì nó đã được đặt ở thẻ cha */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0; /* Bo góc trên */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Khung chứa các tab điều hướng --- */
+/* File: css/index.css */
+
+/* Sửa lại CSS cho các tab điều hướng */
+
+.nav-tabs {
+    display: flex;
+    justify-content: center; /* Đã có: Giữ để căn giữa nhóm tab */
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 0 0 8px 8px;
+    margin-top: -1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding: 10px 0;   /* Thêm chút đệm trên dưới cho đẹp */
+    gap: 20px;         /* << THÊM: Tạo khoảng cách 20px giữa các tab */
+}
+
+.nav-tab {
+    /* flex-grow: 1; */     /* << BỎ HOẶC GHI CHÚ DÒNG NÀY ĐI để tab không bị kéo dài ra */
+    flex-shrink: 0;       /* << THÊM: Đảm bảo tab không bị co lại khi không đủ chỗ */
+    text-align: center;
+    padding: 15px 25px;   /* Tăng padding ngang cho thoáng hơn */
+    cursor: pointer;
+    border-top: 1px solid #eee;
+    color: #555;
+    position: relative;
+    transition: color 0.3s;
+}
+
+/* Các thuộc tính khác của .nav-tab giữ nguyên */
+.nav-tab:hover {
+    color: #d32f2f;
+}
+
+.nav-tab h4, .nav-tab p {
+    margin: 0;
+    pointer-events: none;
+}
+
+.nav-tab h4 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nav-tab p {
+    font-size: 12px;
+}
+
+.nav-tab.active {
+    color: #111;
+}
+
+.nav-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #e53935;
+    border-radius: 3px 3px 0 0;
+}
+
+
+
+/* ======================= CATEGORIES ======================= */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.category-item {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    color: var(--text-secondary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: var(--text-primary);
+    border-color: var(--primary-color);
+}
+
+.category-item i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.category-item span {
+    font-weight: 500;
+    display: block;
+}
+
+
+/* ======================= PRODUCT GRID & CARD ======================= */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+    position: relative;
+    background-color: #ffffff;
+}
+
+.product-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.product-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.product-tag.new { background-color: var(--primary-color); }
+.product-tag.sale { background-color: var(--accent-color); }
+
+.product-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+.product-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.product-price .new-price {
+    color: var(--accent-color);
+}
+
+.product-price .old-price {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    margin-left: 10px;
+}
+
+
+/* ======================= PROMO BANNER ======================= */
+.promo-banner {
+    background-color: var(--primary-color);
+    padding: 50px 0;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.promo-banner h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+.promo-banner h2 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin: 10px 0 25px;
+}
+
+
+/* ======================= BRANDS ======================= */
+.brand-logos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.brand-logos img {
+    height: 40px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    filter: grayscale(100%) invert(100%);
+}
+
+.brand-logos img:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* ======================= RESPONSIVE DESIGN (RIÊNG) ======================= */
+@media (max-width: 992px) {
+    .hero h1 { font-size: 2.8rem; }
+}
+
+@media (max-width: 768px) {
+    .section-title { font-size: 2rem; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1rem; }
+    .product-grid { grid-template-columns: 1fr; }
+}

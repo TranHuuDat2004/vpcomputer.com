@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xây Dựng Cấu Hình - VP Computer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Đã cập nhật đường dẫn -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/builder.css">
+</head>
+
+<body>
+    <header-placeholder></header-placeholder>
+
+    <main class="builder-main">
+        <div class="container">
+            <h1 class="builder-title">Xây Dựng Cấu Hình PC Của Bạn</h1>
+            <div class="builder-layout">
+                <div class="component-selector">
+                    <div class="component-row" data-type="cpu">
+                        <div class="component-icon"><i class="fas fa-microchip"></i></div>
+                        <div class="component-details">
+                            <h4>1. CPU - Vi xử lý</h4>
+                            <div class="selected-item" id="selected-cpu">Chưa chọn linh kiện</div>
+                        </div><button class="btn-select" data-type="cpu">Chọn</button>
+                    </div>
+                    <div class="component-row" data-type="mainboard">
+                        <div class="component-icon"><i class="fas fa-server"></i></div>
+                        <div class="component-details">
+                            <h4>2. Mainboard - Bo mạch chủ</h4>
+                            <div class="selected-item" id="selected-mainboard">Chưa chọn linh kiện</div>
+                        </div><button class="btn-select" data-type="mainboard">Chọn</button>
+                    </div>
+                    <div class="component-row" data-type="ram">
+                        <div class="component-icon"><i class="fas fa-memory"></i></div>
+                        <div class="component-details">
+                            <h4>3. RAM</h4>
+                            <div class="selected-item" id="selected-ram">Chưa chọn linh kiện</div>
+                        </div><button class="btn-select" data-type="ram">Chọn</button>
+                    </div>
+                    <div class="component-row" data-type="vga">
+                        <div class="component-icon"><i class="fas fa-gamepad"></i></div>
+                        <div class="component-details">
+                            <h4>4. VGA - Card đồ họa</h4>
+                            <div class="selected-item" id="selected-vga">Chưa chọn linh kiện</div>
+                        </div><button class="btn-select" data-type="vga">Chọn</button>
+                    </div>
+                    <div class="component-row" data-type="psu">
+                        <div class="component-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="component-details">
+                            <h4>5. PSU - Nguồn</h4>
+                            <div class="selected-item" id="selected-psu">Chưa chọn linh kiện</div>
+                        </div><button class="btn-select" data-type="psu">Chọn</button>
+                    </div>
+                </div>
+                <aside class="summary-panel">
+                    <h3>Cấu Hình Của Bạn</h3>
+                    <div class="compatibility-check">
+                        <h4>Kiểm tra tương thích:</h4>
+                        <ul id="compatibility-messages">
+                            <li class="info">Hãy chọn CPU và Mainboard để bắt đầu.</li>
+                        </ul>
+                    </div>
+                    <div class="price-summary">
+                        <h4>Tạm tính:</h4>
+                        <p id="total-price">0đ</p>
+                    </div>
+                    <button class="btn-add-to-cart" disabled>Thêm vào giỏ hàng</button>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h3 id="modal-title">Chọn một linh kiện</h3>
+            <div id="modal-product-list"></div>
+        </div>
+    </div>
+
+        <!-- Footer sẽ tự động được chèn vào đây -->
+    <footer-placeholder></footer-placeholder>
+
+    <!-- SCRIPT: LUÔN ĐẶT Ở CUỐI BODY -->
+     <script src="js/data.js"></script> <!-- << Tải dữ liệu ĐẦU TIÊN -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/builder.js"></script> <!-- Script riêng của trang builder -->
+</body>
+
+</html>

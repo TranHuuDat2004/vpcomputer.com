@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm - VP Computer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Link tới các file CSS cần thiết -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product.css">
+</head>
+<body>
+
+    <!-- Header tự động -->
+    <header-placeholder></header-placeholder>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Tất Cả Sản Phẩm</h1>
+                <div class="sort-options">
+                    <label for="sort">Sắp xếp theo:</label>
+                    <select name="sort" id="sort">
+                        <option value="default">Mặc định</option>
+                        <option value="price-asc">Giá: Tăng dần</option>
+                        <option value="price-desc">Giá: Giảm dần</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-page-layout">
+                <!-- CỘT BÊN TRÁI: BỘ LỌC -->
+                <aside id="filter-sidebar">
+                    <h3><i class="fas fa-filter"></i> Bộ Lọc</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Danh Mục</h4>
+                        <ul class="filter-list" id="category-filter">
+                           <li><a href="#" data-category="all" class="active">Tất cả sản phẩm</a></li>
+                           <li><a href="#" data-category="cpu">CPU - Vi xử lý</a></li>
+                           <li><a href="#" data-category="mainboard">Mainboard</a></li>
+                           <li><a href="#" data-category="vga">VGA - Card đồ họa</a></li>
+                           <li><a href="#" data-category="ram">RAM</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Mức Giá</h4>
+                        <ul class="filter-list" id="price-filter">
+                            <li><label><input type="radio" name="price" value="all" checked> Tất cả</label></li>
+                            <li><label><input type="radio" name="price" value="0-5000000"> Dưới 5 triệu</label></li>
+                            <li><label><input type="radio" name="price" value="5000000-10000000"> Từ 5 - 10 triệu</label></li>
+                            <li><label><input type="radio" name="price" value="10000000-20000000"> Từ 10 - 20 triệu</label></li>
+                            <li><label><input type="radio" name="price" value="20000000-Infinity"> Trên 20 triệu</label></li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Thương Hiệu</h4>
+                        <!-- Checkbox thương hiệu sẽ được JS tự động tạo -->
+                        <ul class="filter-list" id="brand-filter"></ul>
+                    </div>
+
+                </aside>
+
+                <!-- CỘT BÊN PHẢI: SẢN PHẨM -->
+                <section id="product-grid-container">
+                    <!-- Sản phẩm sẽ được JS chèn vào đây -->
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer tự động -->
+    <div style="padding-top: 10px;"></div>
+    <footer-placeholder></footer-placeholder>
+    
+    <!-- Scripts -->
+     <script src="js/data.js"></script> <!-- << Tải dữ liệu ĐẦU TIÊN -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>
