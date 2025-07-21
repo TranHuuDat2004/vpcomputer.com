@@ -76,11 +76,29 @@ document.addEventListener('DOMContentLoaded', () => {
         yPosition += 20;
 
         // Mã đơn hàng và Ngày tạo
+        // Đoạn code mới đã thêm giờ tạo
+        // Mã đơn hàng và Ngày giờ tạo
         const orderId = `VPC-${Math.floor(Date.now() / 1000)}`;
-        const orderDate = new Date().toLocaleDateString('vi-VN');
+        const now = new Date(); // Lấy đối tượng Date hiện tại
+
+        // --- Định dạng Ngày (DD/MM/YYYY) ---
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+        const orderDate = `${day}/${month}/${year}`;
+
+        // --- Định dạng Giờ (HH:MM) ---
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const orderTime = `${hours}:${minutes}`;
+
+        // --- Ghép lại thành chuỗi hoàn chỉnh ---
+        const fullDateTime = `${orderTime} ${orderDate}`;
+
         doc.setFontSize(10);
         doc.text(removeAccents(`Ma don hang: ${orderId}`), margin, yPosition);
-        doc.text(removeAccents(`Ngay tao: ${orderDate}`), pageWidth - margin, yPosition, { align: 'right' });
+        // In ra chuỗi ngày giờ mới
+        doc.text(removeAccents(`Ngay gio tao: ${fullDateTime}`), pageWidth - margin, yPosition, { align: 'right' });
         yPosition += 15;
         doc.line(margin, yPosition, pageWidth - margin, yPosition);
         yPosition += 25;
@@ -156,9 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- LƯU FILE PDF ---
         const today = new Date();
-        const day = String(today.getDate()).padStart(2, '0');
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const year = today.getFullYear();
         const formattedDate = `${day}-${month}-${year}`;
         const fileName = `HoaDon_VPComputer-${formattedDate}.pdf`;
         doc.save(fileName);
