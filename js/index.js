@@ -123,6 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
         featuredGrid.innerHTML = ''; // Xóa grid cũ
 
         featuredProducts.forEach(product => {
+            // Thêm biến kiểm tra tình trạng hàng
+            const isAvailable = product.stockStatus === 'Còn hàng';
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.dataset.id = product.id;
@@ -145,7 +147,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h3 class="product-name">${product.name}</h3>
                 ${priceHTML}
                 <div class="product-actions">
-                    <button class="btn btn-secondary">Thêm vào giỏ</button>
+                                    <button class="btn btn-secondary" ${isAvailable ? '' : 'disabled'}>
+                    ${isAvailable ? 'Thêm vào giỏ' : 'Hết hàng'}
+                </button>
                 </div>
             </div>
         `;
@@ -154,6 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-// Gọi hàm để hiển thị sản phẩm nổi bật
-renderFeaturedProducts();
+    // Gọi hàm để hiển thị sản phẩm nổi bật
+    renderFeaturedProducts();
 });

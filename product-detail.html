@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sản Phẩm - VP Computer</title>
+    <title>VP Computer - Thiên Đường Linh Kiện PC</title>
+    <meta name="description"
+        content="PC Master - Cửa hàng linh kiện vi tính, gaming gear chính hãng, giá tốt nhất. CPU, VGA, Mainboard, RAM, SSD, Nguồn.">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (for icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <!-- Link tới các file CSS cần thiết -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/product.css">
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="css/style.css"> <!-- File CSS chung -->
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/product-detail.css">
 </head>
 <body>
 
     <header-placeholder></header-placeholder>
 
-    <main id="product-detail-container">
-        <!-- Nội dung chi tiết sản phẩm sẽ được JS chèn vào đây -->
+    <main id="product-detail-container" class="container">
+        <!-- Nội dung sẽ được JS chèn vào đây -->
         <div class="loading-spinner"></div>
     </main>
     
@@ -28,10 +33,33 @@
     <aside id="cart-sidebar" class="cart-sidebar"></aside>
 
     <!-- Scripts -->
+    <!-- THÊM THƯ VIỆN JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="js/data.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/product-detail.js"></script>
+
+    <!-- THÊM SCRIPT ZOOM ẢNH CỦA BẠN -->
+    <script>
+        // Script zoom image
+        $(document).ready(function () {
+            // Dùng event delegation để script hoạt động với ảnh được JS tạo ra
+            $('body').on('mousemove', '.zoom-container', function (e) {
+                var image = $(this).find("img");
+                var offsetX = e.pageX - $(this).offset().left;
+                var offsetY = e.pageY - $(this).offset().top;
+                var posX = offsetX / $(this).width() * 100;
+                var posY = offsetY / $(this).height() * 100;
+                image.css("transform-origin", posX + "% " + posY + "%");
+                image.css("transform", "scale(1.5)");
+            });
+            $('body').on('mouseleave', '.zoom-container', function (e) {
+                $(this).find("img").css("transform", "scale(1)");
+            });
+        });
+    </script>
 </body>
 </html>

@@ -28,24 +28,26 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-         productsToRender.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        productCard.dataset.id = product.id;
+        productsToRender.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.dataset.id = product.id;
 
-        // Tính giá và tạo chuỗi HTML cho giá
-        const salePrice = calculateSalePrice(product);
-        let priceHTML = `<p class="product-price">${salePrice.toLocaleString('vi-VN')}₫</p>`;
-        if (salePrice < product.price) {
-            priceHTML = `
+            // Tính giá và tạo chuỗi HTML cho giá
+            // Thêm biến kiểm tra tình trạng hàng
+            const isAvailable = product.stockStatus === 'Còn hàng';
+            const salePrice = calculateSalePrice(product);
+            let priceHTML = `<p class="product-price">${salePrice.toLocaleString('vi-VN')}₫</p>`;
+            if (salePrice < product.price) {
+                priceHTML = `
                 <p class="product-price sale">
                     <span class="new-price">${salePrice.toLocaleString('vi-VN')}₫</span>
                     <span class="old-price">${product.price.toLocaleString('vi-VN')}₫</span>
                 </p>
             `;
-        }
+            }
 
-        productCard.innerHTML = `
+            productCard.innerHTML = `
             <a href="product-detail.html?id=${product.id}" class="product-link">
                 <div class="product-image">
                     <img src="${product.image}" alt="${product.name}">
@@ -56,12 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </a>
             <div class="product-actions">
-                <button class="btn btn-secondary">Thêm vào giỏ</button>
+                                <button class="btn btn-secondary" ${isAvailable ? '' : 'disabled'}>
+                    ${isAvailable ? 'Thêm vào giỏ' : 'Hết hàng'}
+                </button>
             </div>
         `;
-        productGrid.appendChild(productCard);
-    });
-}
+            productGrid.appendChild(productCard);
+        });
+    }
 
     // --- Hàm tự động tạo checkbox thương hiệu ---
     function populateBrandFilter() {
