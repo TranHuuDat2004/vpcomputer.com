@@ -65,8 +65,7 @@ const allProducts = [
         image: 'img/product/ASUS PRIME B760M-A WIFI D4.jpg',
         gallery: [
             'img/product/ASUS PRIME B760M-A WIFI D4.jpg',
-            'img/product/gallery/main-asus-angle-1.jpg',
-            'img/product/gallery/main-asus-angle-2.jpg'
+
         ],
         attributes: { socket: 'LGA 1700', ddr: 'DDR4' },
         description: `<h4>Nền tảng ổn định, kết nối toàn diện</h4><p>Mainboard ASUS PRIME B760M-A WIFI D4 hỗ trợ CPU Intel thế hệ 12 & 13, RAM DDR4, và tích hợp sẵn Wi-Fi 6, là lựa chọn hoàn hảo cho các bộ máy tầm trung hiệu năng cao mà không cần đầu tư vào RAM DDR5 đắt đỏ.</p><ul><li><strong>Socket:</strong> LGA 1700</li><li><strong>Chipset:</strong> B760</li><li><strong>Hỗ trợ RAM:</strong> DDR4</li><li><strong>Kết nối không dây:</strong> Wi-Fi 6 + Bluetooth 5.2</li></ul>`
