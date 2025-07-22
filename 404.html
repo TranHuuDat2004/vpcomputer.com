@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Không Tìm Thấy Trang - VP Computer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/error-page.css">
+</head>
+
+<body>
+        <!-- ======================= HEADER ======================= -->
+    <header-placeholder></header-placeholder>
+    <div class="error-page-container">
+        <div class="error-box">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Ôi không! Không tìm thấy trang.</h1>
+            <p class="error-message">
+                Xin lỗi, trang bạn đang tìm kiếm có thể đã bị xóa, đổi tên hoặc tạm thời không có sẵn.
+            </p>
+            <a href="index.html" class="btn-home">
+                <i class="fas fa-arrow-left"></i>
+                Quay về Trang Chủ
+            </a>
+        </div>
+    </div>
+    <!-- ======================= FOOTER ======================= -->
+    <footer-placeholder></footer-placeholder>
+
+    <!-- THÊM "VỊ TRÍ CHỜ" CHO GIỎ HÀNG VÀO ĐÂY -->
+    <aside id="cart-sidebar" class="cart-sidebar"></aside>
+
+    <!-- SCRIPT -->
+
+    <!-- 2. Tải các component Header/Footer -->
+    <script src="js/data.js"></script> <!-- << Tải dữ liệu ĐẦU TIÊN -->
+    <script src="js/cart.js"></script> <!-- << THÊM VÀO ĐÂY -->
+
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+
+    <!-- 3. Tải file script của trang (dùng Swiper) SAU CÙNG -->
+    <script src="js/index.js"></script>
+</body>
+
+</html>

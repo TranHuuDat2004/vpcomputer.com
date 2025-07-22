@@ -1,0 +1,69 @@
+/* css/error-page.css */
+
+body {
+    /* Đảm bảo body chiếm toàn bộ màn hình */
+    margin: 0;
+    padding: 0;
+}
+
+.error-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-dark); /* Nền mặc định của trang */
+    font-family: var(--font-family);
+    text-align: center;
+    padding: 20px;
+}
+
+.error-box {
+    max-width: 600px;
+}
+
+.error-code {
+    font-size: 10rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 20px;
+    text-shadow: 0 5px 10px rgba(0, 123, 255, 0.2);
+}
+
+.error-title {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.error-message {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.btn-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-home:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+/* Thêm vào cuối file css/error-page.css */
+
+.maintenance-icon {
+    font-size: 8rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}

@@ -17,8 +17,8 @@ const allProducts = [
         image: 'img/product/Intel Core i5-13400F.jpg',
         gallery: [
             'img/product/Intel Core i5-13400F.jpg',
-            'img/product/gallery/cpu-angle-1.jpg',
-            'img/product/gallery/cpu-angle-2.jpg'
+            'img/product/Intel Core i5-13400F-2.jpg',
+            'img/product/Intel Core i5-13400F-3.jpg'
         ],
         attributes: { socket: 'LGA 1700', wattage: 65 },
         description: `<h4>Hiệu năng vượt trội cho Gaming và Sáng tạo</h4><p>Intel Core i5-13400F là sự lựa chọn vàng trong phân khúc tầm trung, mang lại hiệu suất ấn tượng cho cả chơi game và các tác vụ đa nhiệm. Với kiến trúc lai kết hợp giữa P-core và E-core, CPU này đảm bảo xử lý mượt mà từ game AAA đến render video nhẹ nhàng.</p><ul><li><strong>Socket:</strong> LGA 1700</li><li><strong>Số nhân / luồng:</strong> 10 nhân (6 P-core + 4 E-core) / 16 luồng</li><li><strong>Tốc độ Turbo tối đa:</strong> 4.6 GHz</li><li><strong>Bộ nhớ đệm:</strong> 20 MB Intel Smart Cache</li></ul>`
@@ -29,8 +29,8 @@ const allProducts = [
         image: 'img/product/Intel Core i7-13700K.jpg',
         gallery: [
             'img/product/Intel Core i7-13700K.jpg',
-            'img/product/gallery/cpu-angle-1.jpg',
-            'img/product/gallery/cpu-angle-2.jpg'
+            'img/product/Intel Core i7-13700K-2.jpg',
+            'img/product/Intel Core i7-13700K-3.jpg'
         ],
         attributes: { socket: 'LGA 1700', wattage: 125 },
         description: `<h4>Sức mạnh tối thượng cho Game thủ và Chuyên gia</h4><p>Với 16 nhân và 24 luồng, Core i7-13700K không chỉ là một con quái vật gaming mà còn xử lý xuất sắc các tác vụ đồ họa, render video và livestream chuyên nghiệp. Khả năng ép xung mạnh mẽ (hậu tố 'K') cho phép bạn đẩy hiệu năng lên một tầm cao mới.</p><ul><li><strong>Socket:</strong> LGA 1700</li><li><strong>Số nhân / luồng:</strong> 16 nhân (8 P-core + 8 E-core) / 24 luồng</li><li><strong>Tốc độ Turbo tối đa:</strong> 5.4 GHz</li><li><strong>Hỗ trợ ép xung:</strong> Có</li></ul>`
@@ -41,7 +41,7 @@ const allProducts = [
         image: 'img/product/AMD Ryzen 5 7600X.jpg',
         gallery: [
             'img/product/AMD Ryzen 5 7600X.jpg',
-            'img/product/gallery/cpu-amd-angle-1.jpg'
+            'img/product/AMD Ryzen 5 7600X-2.jpg'
         ],
         attributes: { socket: 'AM5', wattage: 105 },
         description: `<h4>Hiệu năng Gaming thuần túy trên nền tảng mới</h4><p>AMD Ryzen 5 7600X xây dựng trên kiến trúc Zen 4 mạnh mẽ, mang lại xung nhịp cực cao và hiệu năng đơn nhân xuất sắc, là lựa chọn lý tưởng cho các game thủ muốn tối ưu hóa FPS. Hỗ trợ RAM DDR5 và PCIe 5.0, sẵn sàng cho tương lai.</p><ul><li><strong>Socket:</strong> AM5</li><li><strong>Số nhân / luồng:</strong> 6 nhân / 12 luồng</li><li><strong>Tốc độ Boost tối đa:</strong> 5.3 GHz</li><li><strong>Hỗ trợ RAM:</strong> DDR5</li></ul>`
@@ -52,7 +52,7 @@ const allProducts = [
         image: 'img/product/AMD Ryzen 9 7950X.jpg',
         gallery: [
             'img/product/AMD Ryzen 9 7950X.jpg',
-            'img/product/gallery/cpu-amd-angle-1.jpg'
+            'img/product/AMD Ryzen 9 7950X-2.jpg'
         ],
         attributes: { socket: 'AM5', wattage: 120 },
         description: `<h4>Nhà vô địch về hiệu năng đa luồng</h4><p>AMD Ryzen 9 7950X là sự lựa chọn hàng đầu cho các chuyên gia sáng tạo, lập trình viên và streamer. Với 16 nhân và 32 luồng, nó dễ dàng "cân" mọi tác vụ nặng nhất từ render 3D, biên dịch code đến streaming game chất lượng cao.</p><ul><li><strong>Socket:</strong> AM5</li><li><strong>Số nhân / luồng:</strong> 16 nhân / 32 luồng</li><li><strong>Tốc độ Boost tối đa:</strong> 5.7 GHz</li><li><strong>Tổng bộ nhớ đệm:</strong> 80 MB</li></ul>`

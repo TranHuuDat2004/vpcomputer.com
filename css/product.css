@@ -267,6 +267,71 @@
         padding: 8px 15px; /* Giảm kích thước nút */
         font-size: 0.9rem;
     }
+
+     /* Ẩn bộ lọc sắp xếp */
+    .sort-options {
+        display: none;
+    }
+    
+    /* 2. NÚT LỌC SẢN PHẨM (Lấy từ code mới) */
+    .btn-toggle-filter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        font-weight: 500;
+        border: 1px solid var(--border-color);
+        background-color: var(--bg-light);
+        color: var(--text-primary);
+        border-radius: 8px;
+        cursor: pointer;
+        order: -1; /* Đẩy nút lên trên cùng */
+    }
+    .btn-toggle-filter i { margin-right: 8px; }
+
+    /* 3. LAYOUT CHÍNH (Lấy từ code backup - SỬ DỤNG FLEXBOX) */
+    .product-page-layout {
+        flex-direction: column;
+    }
+
+    /* 4. SIDEBAR BỘ LỌC (Lấy từ code mới - DẠNG TRƯỢT) */
+    #filter-sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 300px;
+        max-width: 85%;
+        height: 100%;
+        z-index: 1001;
+        transition: left 0.3s ease-in-out;
+        overflow-y: auto;
+        box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+        margin-bottom: 0; /* Bỏ margin-bottom không cần thiết */
+    }
+    #filter-sidebar.active {
+        left: 0;
+    }
+
+    /* 5. NÚT ĐÓNG BỘ LỌC VÀ LỚP NỀN MỜ (Thêm vào) */
+    .btn-close-filter {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 2rem;
+        color: var(--text-secondary);
+        background: none; border: none; cursor: pointer;
+    }
+    .filter-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+    }
+    .filter-overlay.active { opacity: 1; visibility: visible; }
 }
 
 

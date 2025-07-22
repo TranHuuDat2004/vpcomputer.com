@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Đang Bảo Trì - VP Computer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Tái sử dụng CSS từ trang lỗi -->
+    <link rel="stylesheet" href="css/error-page.css">
+</head>
+
+<body>
+    <!-- ======================= HEADER ======================= -->
+    <header-placeholder></header-placeholder>
+    <div class="error-page-container">
+        <div class="error-box">
+            <!-- Thay đổi icon và nội dung -->
+            <div class="maintenance-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <h1 class="error-title">Website Đang Bảo Trì</h1>
+            <p class="error-message">
+                Chúng tôi đang thực hiện một số nâng cấp để mang lại trải nghiệm tốt hơn cho bạn.
+                <br>
+                VP Computer sẽ sớm trở lại. Cảm ơn bạn đã thông cảm!
+            </p>
+            <!-- (Không cần nút quay về vì toàn bộ trang web đang bảo trì) -->
+        </div>
+    </div>
+    <!-- ======================= FOOTER ======================= -->
+    <footer-placeholder></footer-placeholder>
+
+    <!-- THÊM "VỊ TRÍ CHỜ" CHO GIỎ HÀNG VÀO ĐÂY -->
+    <aside id="cart-sidebar" class="cart-sidebar"></aside>
+
+    <!-- SCRIPT -->
+
+    <!-- 2. Tải các component Header/Footer -->
+    <script src="js/data.js"></script> <!-- << Tải dữ liệu ĐẦU TIÊN -->
+    <script src="js/cart.js"></script> <!-- << THÊM VÀO ĐÂY -->
+
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+
+    <!-- 3. Tải file script của trang (dùng Swiper) SAU CÙNG -->
+    <script src="js/index.js"></script>
+</body>
+
+</html>
