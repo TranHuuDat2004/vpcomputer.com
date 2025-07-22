@@ -1,87 +1,84 @@
-// js/promo-generator.js (Phiên bản đã sửa lỗi và đồng bộ)
+// js/promo-generator.js (Phiên bản "Tờ rơi quảng cáo")
 
 document.addEventListener('DOMContentLoaded', () => {
     
     const promoContainer = document.getElementById('promo-page-container');
-    if (!promoContainer) return; // Thoát sớm nếu không phải trang promotion
+    if (!promoContainer) return;
 
-    // Mảng promoCategories không đổi
+    // 1. Định nghĩa các danh mục bạn muốn hiển thị
     const promoCategories = [
-        { category: 'cpu', title: 'CPU - Vi xử lý', bannerText: 'DEAL CPU', bannerColor: '#e74c3c' },
-        { category: 'vga', title: 'VGA - Card Đồ Họa', bannerText: 'DEAL VGA', bannerColor: '#27ae60' },
-        { category: 'mainboard', title: 'Mainboard', bannerText: 'DEAL MAIN', bannerColor: '#8e44ad' },
-        { category: 'ram', title: 'RAM', bannerText: 'DEAL RAM', bannerColor: '#f39c12' },
-        { category: 'psu', title: 'PSU - Nguồn', bannerText: 'DEAL PSU', bannerColor: '#34495e' }
+        {
+            category: 'cpu',
+            title: 'CPU - BỘ VI XỬ LÝ',
+            subtitle: 'Ưu đãi đặc biệt cho các dòng CPU Intel & AMD'
+        },
+        {
+            category: 'vga',
+            title: 'VGA - CARD ĐỒ HỌA',
+            subtitle: 'Chơi game đỉnh cao với card đồ họa giá sốc'
+        },
+        {
+            category: 'mainboard',
+            title: 'MAINBOARD - BO MẠCH CHỦ',
+            subtitle: 'Nền tảng vững chắc cho mọi cấu hình'
+        },
+        {
+            category: 'ram',
+            title: 'RAM - BỘ NHỚ TRONG',
+            subtitle: 'Nâng cấp tốc độ, đa nhiệm mượt mà'
+        },
+        {
+            category: 'psu',
+            title: 'PSU - NGUỒN MÁY TÍNH',
+            subtitle: 'Nguồn ổn định, bảo vệ toàn diện linh kiện'
+        }
     ];
     
-    // --- HÀM TẠO HTML CHO SLIDE (ĐÃ DỌN DẸP) ---
-    // Hàm này bây giờ sẽ sử dụng hàm calculateSalePrice toàn cục từ data.js
-    function createProductSlide(product) {
+    // 2. Hàm tạo HTML cho một sản phẩm trong lưới
+    function createProductCard(product) {
         if (!product.discountPercent || product.discountPercent <= 0) return '';
         
-        // Gọi hàm toàn cục từ data.js
         const salePrice = calculateSalePrice(product);
 
         return `
-            <div class="swiper-slide">
-                <div class="product-card" data-id="${product.id}">
-                    <div class="sale-tag">Giảm ${product.discountPercent}%</div>
+            <div class="product-card">
+                <a href="product-detail.html?id=${product.id}" class="product-card-link">
                     <div class="product-image"><img src="${product.image}" alt="${product.name}"></div>
                     <div class="product-info">
                         <h3 class="product-name">${product.name}</h3>
-                        <p class="product-price sale">
-                            <span class="new-price">${salePrice.toLocaleString('vi-VN')}₫</span>
+                        <div class="product-price">
                             <span class="old-price">${product.price.toLocaleString('vi-VN')}₫</span>
-                        </p>
-                        <!-- Xóa bỏ data-price không cần thiết -->
-                        <button class="btn btn-secondary">Thêm vào giỏ</button>
+                            <span class="new-price">${salePrice.toLocaleString('vi-VN')}₫</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         `;
     }
 
-    // --- Lặp qua các danh mục để tạo khối (Không đổi) ---
-    promoCategories.forEach((promo, index) => {
-        const productsForSlider = allProducts.filter(p => p.category === promo.category && p.discountPercent > 0);
+    // 3. Lặp qua từng danh mục để tạo khối "tờ rơi"
+    promoCategories.forEach(promo => {
+        // Lọc các sản phẩm có khuyến mãi thuộc danh mục này
+        const productsForGrid = allProducts.filter(p => p.category === promo.category && p.discountPercent > 0);
         
-        if (productsForSlider.length > 0) {
-            const productSlidesHTML = productsForSlider.map(createProductSlide).join('');
-            const promoBlockHTML = `
-                <section class="promo-block">
-                    <div class="promo-banner-side">
-                        <img src="https://via.placeholder.com/300x450/${promo.bannerColor.substring(1)}/ffffff?text=${encodeURIComponent(promo.bannerText)}" alt="Combo ${promo.title}">
-                    </div>
-                    <div class="promo-slider-side">
-                        <div class="swiper promo-swiper">
-                            <div class="swiper-wrapper">${productSlidesHTML}</div>
+        if (productsForGrid.length > 0) {
+            const productCardsHTML = productsForGrid.map(createProductCard).join('');
+
+            const categoryBlockHTML = `
+                <div class="container">
+                    <section class="promo-category-block">
+                        <div class="category-header">
+                            <h2>${promo.title}</h2>
+                            <p>${promo.subtitle}</p>
                         </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                </section>
-                <div class="view-more-container">
-                    <a href="product.html?category=${promo.category}" class="view-more-btn"><i class="fas fa-bolt"></i> XEM THÊM DEAL ${promo.title.toUpperCase()}</a>
+                        <div class="promo-product-grid">
+                            ${productCardsHTML}
+                        </div>
+                    </section>
                 </div>
             `;
-            promoContainer.innerHTML += promoBlockHTML;
+            promoContainer.innerHTML += categoryBlockHTML;
         }
     });
 
-    // --- Khởi tạo Swiper (Không đổi) ---
-    const allPromoSwipers = document.querySelectorAll('.promo-swiper');
-    allPromoSwipers.forEach((swiperElement) => {
-        const nextBtn = swiperElement.parentElement.querySelector('.swiper-button-next');
-        const prevBtn = swiperElement.parentElement.querySelector('.swiper-button-prev');
-
-        new Swiper(swiperElement, {
-            slidesPerView: 2,
-            spaceBetween: 15,
-            navigation: { nextEl: nextBtn, prevEl: prevBtn },
-            breakpoints: {
-                768: { slidesPerView: 3, spaceBetween: 20 },
-                1200: { slidesPerView: 4, spaceBetween: 20 }
-            }
-        });
-    });
 });

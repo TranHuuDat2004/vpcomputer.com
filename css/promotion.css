@@ -1,193 +1,133 @@
-/* css/promotion.css (Phiên bản đã sửa lỗi phóng to) */
+/* css/promotion.css (Phiên bản "Tờ rơi quảng cáo") */
+
+body {
+    /* Đặt background cho toàn bộ trang */
+    background-color: #f5f5f5;
+    /* Màu nền đỏ sẫm */
+    background-image: url('https://via.placeholder.com/1920x1080/7b0909/ffffff?text=Grid+Pattern');
+    /* Thay bằng ảnh pattern của bạn */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
 
 .promo-page-container {
     padding: 30px 0;
 }
 
-.promo-block {
+/* --- Khối danh mục (tờ rơi) --- */
+.promo-category-block {
+    background-color: rgba(255, 255, 255, 0.95);
+    /* Nền trắng mờ */
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+.category-header h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--accent-color);
+    text-transform: uppercase;
+}
+
+.category-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* --- Lưới sản phẩm --- */
+.promo-product-grid {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    background-color: var(--bg-light);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* --- Style Product Card (kiểu tờ rơi) --- */
+.promo-product-grid .product-card {
+    background-color: #fff;
+    border: 2px solid #e0e0e0;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-/* --- Banner bên trái --- */
-.promo-banner-side {
-    height: 100%;
-}
-
-.promo-banner-side img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* --- Slider bên phải --- */
-.promo-slider-side {
-    padding: 20px;
-    position: relative;
-    /* THÊM: Ngăn tràn nội dung slider */
-    overflow: hidden;
-}
-
-.promo-swiper {
-    width: 100%;
-    /* XÓA: height: 100%; */
-}
-
-/* --- Style Product Card (ĐÃ SỬA) --- */
-.promo-swiper .swiper-slide {
-    /* THÊM: Đảm bảo slide có chiều cao tự động theo nội dung */
-    height: auto;
-}
-
-.promo-swiper .product-card {
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    /* XÓA: height: 100%; */
     display: flex;
     flex-direction: column;
-    position: relative;
     overflow: hidden;
-    /* THÊM: Đảm bảo card chiếm hết chiều cao của slide cha */
-    height: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.promo-swiper .product-image {
-    aspect-ratio: 1 / 1;
+.promo-product-grid .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.promo-product-grid .product-image {
+    aspect-ratio: 1/1;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     padding: 10px;
-    background-color: #fff;
 }
 
-.promo-swiper .product-image img {
+.promo-product-grid .product-image img {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
 }
 
-.promo-swiper .product-info {
+.promo-product-grid .product-info {
     padding: 15px;
+    border-top: 1px solid #eee;
+    background-color: #fafafa;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
-.promo-swiper .product-name {
+.promo-product-grid .product-name {
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-primary);
-    margin-bottom: 8px;
     min-height: 40px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    /* 2 dòng */
+    margin-bottom: 10px;
 }
 
-.promo-swiper .product-price {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
+.promo-product-grid .product-price {
     margin-top: auto;
+    /* Đẩy giá xuống dưới */
 }
 
-.promo-swiper .product-price .new-price {
-    font-size: 1.1rem;
+.promo-product-grid .old-price {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-decoration: line-through;
+    display: block;
+    /* Hiển thị trên 1 dòng riêng */
+}
+
+.promo-product-grid .new-price {
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--accent-color);
-    display: inline-block;
-    margin-right: 8px;
 }
 
-.promo-swiper .product-price .old-price {
-    text-decoration: line-through;
+/* Nút Thêm vào giỏ không cần thiết trên layout này */
+.promo-product-grid .btn-secondary {
+    display: none;
 }
 
-.promo-swiper .sale-tag {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: var(--accent-color);
-    color: #fff;
-    padding: 4px 8px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    border-radius: 8px 0 8px 0;
-}
-
-.promo-swiper .btn-secondary {
-    margin-top: 10px;
-    width: 100%;
-}
-
-/* --- Nút điều hướng Slider --- */
-.promo-slider-side .swiper-button-next,
-.promo-slider-side .swiper-button-prev {
-    width: 36px;
-    height: 36px;
-    background-color: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: var(--text-primary);
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.promo-slider-side .swiper-button-next::after,
-.promo-slider-side .swiper-button-prev::after {
-    font-size: 0.8rem;
-    font-weight: 900;
-}
-
-/* --- Nút Xem Thêm --- */
-.view-more-container {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.view-more-btn {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: #fff;
-    padding: 12px 30px;
-    border-radius: 25px;
+/* Biến cả card thành link */
+.product-card-link {
     text-decoration: none;
-    font-weight: 700;
-    transition: background-color 0.3s;
-}
-
-.view-more-btn:hover {
-    background-color: #c0392b;
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 1200px) {
-    .promo-block {
-        grid-template-columns: 240px 1fr;
-    }
-}
-
-@media (max-width: 992px) {
-    .promo-block {
-        grid-template-columns: 1fr;
-    }
-
-    .promo-banner-side {
-        width: 100%;
-        height: 200px;
-    }
-}
-
-@media (max-width: 768px) {
-    .promo-slider-side {
-        padding: 15px;
-    }
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
