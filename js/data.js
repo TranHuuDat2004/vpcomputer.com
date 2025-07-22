@@ -1,11 +1,22 @@
 // js/data.js (Phiên bản đã cập nhật đầy đủ mô tả sản phẩm)
 
+// --- HÀM TRỢ GIÚP TOÀN CỤC ---
+function calculateSalePrice(product) {
+    if (!product || !product.price || !product.discountPercent || product.discountPercent <= 0) {
+        return product.price; // Trả về giá gốc nếu không có khuyến mãi
+    }
+    const salePrice = product.price * (1 - product.discountPercent / 100);
+    // Làm tròn đến hàng nghìn gần nhất
+    return Math.round(salePrice / 1000) * 1000;
+}
+
 const allProducts = [
     // CPUs
     { 
-        id: 'cpu1', name: 'Intel Core i5-13400F', price: 5490000, brand: 'Intel', category: 'cpu', 
+        id: 'cpu1', name: 'Intel Core i5-13400F', price: 5490000, discountPercent: 5, brand: 'Intel', category: 'cpu', 
         image: 'img/product/Intel Core i5-13400F.jpg',
         attributes: { socket: 'LGA 1700', wattage: 65 },
+        // Mô tả sản phẩm với HTML
         description: `
             <h4>Hiệu năng vượt trội cho Gaming và Sáng tạo</h4>
             <p>Intel Core i5-13400F là sự lựa chọn vàng trong phân khúc tầm trung, mang lại hiệu suất ấn tượng cho cả chơi game và các tác vụ đa nhiệm. Với kiến trúc lai kết hợp giữa P-core và E-core, CPU này đảm bảo xử lý mượt mà từ game AAA đến render video nhẹ nhàng.</p>
@@ -18,7 +29,7 @@ const allProducts = [
         `
     },
     { 
-        id: 'cpu2', name: 'Intel Core i7-13700K', price: 10590000, brand: 'Intel', category: 'cpu', 
+        id: 'cpu2', name: 'Intel Core i7-13700K', price: 10590000, discountPercent: 5, brand: 'Intel', category: 'cpu', 
         image: 'img/product/Intel Core i7-13700K.jpg',
         attributes: { socket: 'LGA 1700', wattage: 125 },
         description: `
@@ -33,7 +44,7 @@ const allProducts = [
         `
     },
     { 
-        id: 'cpu3', name: 'AMD Ryzen 5 7600X', price: 6200000, brand: 'AMD', category: 'cpu', 
+        id: 'cpu3', name: 'AMD Ryzen 5 7600X', price: 6200000, discountPercent: 5, brand: 'AMD', category: 'cpu', 
         image: 'img/product/AMD Ryzen 5 7600X.jpg',
         attributes: { socket: 'AM5', wattage: 105 },
         description: `
@@ -48,7 +59,7 @@ const allProducts = [
         `
     },
     { 
-        id: 'cpu4', name: 'AMD Ryzen 9 7950X', price: 15500000, brand: 'AMD', category: 'cpu', 
+        id: 'cpu4', name: 'AMD Ryzen 9 7950X', price: 15500000, discountPercent: 5, brand: 'AMD', category: 'cpu', 
         image: 'img/product/AMD Ryzen 9 7950X.jpg',
         attributes: { socket: 'AM5', wattage: 120 },
         description: `
@@ -65,7 +76,7 @@ const allProducts = [
 
     // Mainboards
     { 
-        id: 'mb1', name: 'ASUS PRIME B760M-A WIFI D4', price: 4190000, brand: 'ASUS', category: 'mainboard', 
+        id: 'mb1', name: 'ASUS PRIME B760M-A WIFI D4', price: 4190000, discountPercent: 5, brand: 'ASUS', category: 'mainboard', 
         image: 'img/product/ASUS PRIME B760M-A WIFI D4.jpg',
         attributes: { socket: 'LGA 1700', ddr: 'DDR4' },
         description: `
@@ -80,7 +91,7 @@ const allProducts = [
         `
     },
     { 
-        id: 'mb2', name: 'GIGABYTE Z790 AORUS ELITE AX', price: 7190000, brand: 'Gigabyte', category: 'mainboard', 
+        id: 'mb2', name: 'GIGABYTE Z790 AORUS ELITE AX', price: 7190000, discountPercent: 5, brand: 'Gigabyte', category: 'mainboard', 
         image: 'img/product/GIGABYTE Z790 AORUS ELITE AX.jpg',
         attributes: { socket: 'LGA 1700', ddr: 'DDR5' },
         description: `
@@ -95,7 +106,7 @@ const allProducts = [
         `
     },
     { 
-        id: 'mb3', name: 'ASUS TUF GAMING B650-PLUS', price: 5590000, brand: 'ASUS', category: 'mainboard', 
+        id: 'mb3', name: 'ASUS TUF GAMING B650-PLUS', price: 5590000, discountPercent: 5, brand: 'ASUS', category: 'mainboard', 
         image: 'img/product/ASUS TUF GAMING B650-PLUS.jpg',
         attributes: { socket: 'AM5', ddr: 'DDR5' },
         description: `
@@ -112,7 +123,7 @@ const allProducts = [
 
     // RAM
     { 
-        id: 'ram1', name: 'Corsair Vengeance 16GB Bus 3200', price: 1150000, brand: 'Corsair', category: 'ram', 
+        id: 'ram1', name: 'Corsair Vengeance 16GB Bus 3200', price: 1150000, discountPercent: 5, brand: 'Corsair', category: 'ram', 
         image: 'img/product/Corsair Vengeance 16GB Bus 3200.jpg',
         attributes: { ddr: 'DDR4' },
         description: `
@@ -126,7 +137,7 @@ const allProducts = [
         `
     },
     { 
-        id: 'ram2', name: 'G.Skill Trident Z5 32GB Bus 6000', price: 3250000, brand: 'G.Skill', category: 'ram', 
+        id: 'ram2', name: 'G.Skill Trident Z5 32GB Bus 6000', price: 3250000, discountPercent: 5, brand: 'G.Skill', category: 'ram', 
         image: 'img/product/G.Skill Trident Z5 32GB Bus 6000.jpg',
         attributes: { ddr: 'DDR5' },
         description: `
@@ -142,7 +153,7 @@ const allProducts = [
     
     // VGAs
     { 
-        id: 'vga1', name: 'GIGABYTE RTX 3060 12GB', price: 8290000, brand: 'Gigabyte', category: 'vga', 
+        id: 'vga1', name: 'GIGABYTE RTX 3060 12GB', price: 8290000, discountPercent: 5, brand: 'Gigabyte', category: 'vga', 
         image: 'img/product/GIGABYTE RTX 3060 12GB.jpg',
         attributes: { wattage: 170 },
         description: `
@@ -156,7 +167,7 @@ const allProducts = [
         `
     },
     { 
-        id: 'vga2', name: 'ASUS TUF RTX 4070 Ti 12GB', price: 22490000, brand: 'ASUS', category: 'vga', 
+        id: 'vga2', name: 'ASUS TUF RTX 4070 Ti 12GB', price: 22490000, discountPercent: 5, brand: 'ASUS', category: 'vga', 
         image: 'img/product/ASUS TUF RTX 4070 Ti 12GB.jpg',
         attributes: { wattage: 285 },
         description: `
@@ -170,7 +181,7 @@ const allProducts = [
         `
     },
     { 
-        id: 'vga3', name: 'MSI RTX 4090 SUPRIM X 24G', price: 49990000, brand: 'MSI', category: 'vga', 
+        id: 'vga3', name: 'MSI RTX 4090 SUPRIM X 24G', price: 49990000, discountPercent: 5, brand: 'MSI', category: 'vga', 
         image: 'img/product/MSI RTX 4090 SUPRIM X 24G.jpg',
         attributes: { wattage: 450 },
         description: `
@@ -186,7 +197,7 @@ const allProducts = [
 
     // PSU
     {
-        id: 'psu1', name: 'Cooler Master MWE 650W Bronze V2', price: 1590000, brand: 'Cooler Master', category: 'psu',
+        id: 'psu1', name: 'Cooler Master MWE 650W Bronze V2', price: 1590000, discountPercent: 5, brand: 'Cooler Master', category: 'psu',
         image: 'img/product/Cooler Master MWE 650W Bronze V2.jpg',
         attributes: { wattage: 650 },
         description: `
@@ -200,7 +211,7 @@ const allProducts = [
         `
     },
     {
-        id: 'psu2', name: 'Corsair RM850e 850W 80 Plus Gold', price: 2950000, brand: 'Corsair', category: 'psu',
+        id: 'psu2', name: 'Corsair RM850e 850W 80 Plus Gold', price: 2950000, discountPercent: 5, brand: 'Corsair', category: 'psu',
         image: 'img/product/Corsair RM850e 850W 80 Plus Gold.jpg',
         attributes: { wattage: 850 },
         description: `

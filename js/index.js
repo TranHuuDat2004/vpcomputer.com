@@ -47,20 +47,20 @@ document.addEventListener('DOMContentLoaded', function () {
         navTabs.forEach((tab, index) => {
             // Xóa class 'active' khỏi tất cả các tab
             tab.classList.remove('active');
-            
+
             // Thêm class 'active' chỉ cho tab tương ứng với slide hiện tại
             if (index === currentIndex) {
                 tab.classList.add('active');
             }
         });
     }
-    
+
     /**
      * Hàm bắt đầu tự động chuyển slide
      */
     function startAutoPlay() {
         // Chắc chắn rằng không có interval nào đang chạy trước khi bắt đầu
-        stopAutoPlay(); 
+        stopAutoPlay();
         // Cứ mỗi 5 giây (5000ms) sẽ tự động chuyển đến slide tiếp theo
         autoPlayInterval = setInterval(() => {
             goToSlide(currentIndex + 1);
@@ -81,14 +81,14 @@ document.addEventListener('DOMContentLoaded', function () {
     nextBtn.addEventListener('click', () => {
         goToSlide(currentIndex + 1);
         // Reset bộ đếm thời gian mỗi khi người dùng tự bấm nút
-        startAutoPlay(); 
+        startAutoPlay();
     });
 
     // 2. Sự kiện click cho nút "Trước"
     prevBtn.addEventListener('click', () => {
         goToSlide(currentIndex - 1);
         // Reset bộ đếm thời gian
-        startAutoPlay(); 
+        startAutoPlay();
     });
 
     // 3. Sự kiện click cho các tab điều hướng
@@ -106,39 +106,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // === KHỞI TẠO SLIDER ===
-    
+
     // Hiển thị slide đầu tiên khi tải trang
-    goToSlide(0); 
-    
+    goToSlide(0);
+
     // Bắt đầu tự động chạy
     startAutoPlay();
 
     function renderFeaturedProducts() {
-    const featuredGrid = document.getElementById('featured-product-grid');
-    if (!featuredGrid) return; // Nếu không tìm thấy grid thì thoát
+        const featuredGrid = document.getElementById('featured-product-grid');
+        if (!featuredGrid) return; // Nếu không tìm thấy grid thì thoát
 
-    // Lấy 4 sản phẩm đầu tiên làm sản phẩm nổi bật (bạn có thể thay đổi logic này)
-    const featuredProducts = allProducts.slice(0, 8);
+        // Lấy 4 sản phẩm đầu tiên làm sản phẩm nổi bật (bạn có thể thay đổi logic này)
+        const featuredProducts = allProducts.slice(0, 8);
 
-    featuredGrid.innerHTML = ''; // Xóa grid cũ
-    
-    featuredProducts.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        productCard.dataset.id = product.id; // << THÊM DÒNG NÀY
-        productCard.innerHTML = `
-            <div class="product-image">
-                <img src="${product.image}" alt="${product.name}">
-            </div>
+        featuredGrid.innerHTML = ''; // Xóa grid cũ
+
+        featuredProducts.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.dataset.id = product.id;
+
+            // Tái sử dụng logic tính giá
+            const salePrice = calculateSalePrice(product);
+            let priceHTML = `<p class="product-price">${salePrice.toLocaleString('vi-VN')}₫</p>`;
+            if (salePrice < product.price) {
+                priceHTML = `
+                <p class="product-price sale">
+                    <span class="new-price">${salePrice.toLocaleString('vi-VN')}₫</span>
+                    <span class="old-price">${product.price.toLocaleString('vi-VN')}₫</span>
+                </p>
+            `;
+            }
+
+            productCard.innerHTML = `
+            <div class="product-image"><img src="${product.image}" alt="${product.name}"></div>
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
-                <p class="product-price">${product.price.toLocaleString('vi-VN')}₫</p>
-                <button class="btn btn-secondary">Thêm vào giỏ</button>
+                ${priceHTML}
+                <div class="product-actions">
+                    <button class="btn btn-secondary">Thêm vào giỏ</button>
+                </div>
             </div>
         `;
-        featuredGrid.appendChild(productCard);
-    });
-}
+            featuredGrid.appendChild(productCard);
+        });
+    }
+
 
 // Gọi hàm để hiển thị sản phẩm nổi bật
 renderFeaturedProducts();

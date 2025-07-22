@@ -1,23 +1,25 @@
-/* css/promotion.css (Phiên bản nâng cấp) */
+/* css/promotion.css (Phiên bản đã sửa lỗi phóng to) */
 
 .promo-page-container {
     padding: 30px 0;
 }
 
 .promo-block {
-    display: flex;
+    display: grid;
+    grid-template-columns: 280px 1fr;
     background-color: var(--bg-light);
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     margin-bottom: 20px;
 }
 
 /* --- Banner bên trái --- */
 .promo-banner-side {
-    flex: 0 0 280px; /* Chiều rộng cố định cho banner */
+    height: 100%;
 }
+
 .promo-banner-side img {
     width: 100%;
     height: 100%;
@@ -27,30 +29,35 @@
 
 /* --- Slider bên phải --- */
 .promo-slider-side {
-    flex: 1;
     padding: 20px;
-    position: relative; /* Để định vị nút điều hướng */
+    position: relative;
+    /* THÊM: Ngăn tràn nội dung slider */
+    overflow: hidden;
 }
 
 .promo-swiper {
     width: 100%;
-    height: 100%;
+    /* XÓA: height: 100%; */
 }
 
-/* --- Style Product Card bên trong slider --- */
+/* --- Style Product Card (ĐÃ SỬA) --- */
 .promo-swiper .swiper-slide {
-    text-align: left;
+    /* THÊM: Đảm bảo slide có chiều cao tự động theo nội dung */
+    height: auto;
 }
 
 .promo-swiper .product-card {
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    height: 100%; /* Đảm bảo các card cao bằng nhau */
+    /* XÓA: height: 100%; */
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    /* THÊM: Đảm bảo card chiếm hết chiều cao của slide cha */
+    height: 100%;
 }
+
 .promo-swiper .product-image {
     aspect-ratio: 1 / 1;
     display: flex;
@@ -59,27 +66,38 @@
     padding: 10px;
     background-color: #fff;
 }
+
 .promo-swiper .product-image img {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
 }
+
 .promo-swiper .product-info {
     padding: 15px;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
+
 .promo-swiper .product-name {
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-primary);
     margin-bottom: 8px;
-    height: 40px; /* Giữ 2 dòng cho tên SP */
+    min-height: 40px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
 .promo-swiper .product-price {
     font-size: 0.8rem;
     color: var(--text-secondary);
+    margin-top: auto;
 }
+
 .promo-swiper .product-price .new-price {
     font-size: 1.1rem;
     font-weight: 700;
@@ -87,9 +105,11 @@
     display: inline-block;
     margin-right: 8px;
 }
+
 .promo-swiper .product-price .old-price {
     text-decoration: line-through;
 }
+
 .promo-swiper .sale-tag {
     position: absolute;
     top: 0;
@@ -102,6 +122,11 @@
     border-radius: 8px 0 8px 0;
 }
 
+.promo-swiper .btn-secondary {
+    margin-top: 10px;
+    width: 100%;
+}
+
 /* --- Nút điều hướng Slider --- */
 .promo-slider-side .swiper-button-next,
 .promo-slider-side .swiper-button-prev {
@@ -110,11 +135,12 @@
     background-color: #fff;
     border: 1px solid var(--border-color);
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: var(--text-primary);
     top: 50%;
     transform: translateY(-50%);
 }
+
 .promo-slider-side .swiper-button-next::after,
 .promo-slider-side .swiper-button-prev::after {
     font-size: 0.8rem;
@@ -126,6 +152,7 @@
     text-align: center;
     margin-bottom: 40px;
 }
+
 .view-more-btn {
     display: inline-block;
     background-color: var(--accent-color);
@@ -136,18 +163,31 @@
     font-weight: 700;
     transition: background-color 0.3s;
 }
+
 .view-more-btn:hover {
     background-color: #c0392b;
 }
 
-/* --- Responsive --- */
+/* --- RESPONSIVE --- */
+@media (max-width: 1200px) {
+    .promo-block {
+        grid-template-columns: 240px 1fr;
+    }
+}
+
 @media (max-width: 992px) {
     .promo-block {
-        flex-direction: column; /* Xếp chồng lên nhau */
+        grid-template-columns: 1fr;
     }
+
     .promo-banner-side {
-        flex: 0 0 auto; /* Reset flex */
         width: 100%;
-        height: 200px; /* Chiều cao cố định cho banner mobile */
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .promo-slider-side {
+        padding: 15px;
     }
 }

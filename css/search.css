@@ -3,21 +3,131 @@
     text-align: center;
     margin: 40px 0;
 }
+
 .search-header h1 {
     color: var(--text-primary);
     margin-bottom: 10px;
 }
+
 .search-header p {
     color: var(--text-secondary);
 }
+
 #search-query {
     color: var(--primary-color);
 }
-/* Tái sử dụng .product-grid và .product-card từ các file CSS khác */
-.product-grid { /* Đảm bảo có grid layout */
+
+/* --- GRID HIỂN THỊ KẾT QUẢ TÌM KIẾM --- */
+.product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* SỬA LỖI: Chuyển sang 4 cột */
+    grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     padding-bottom: 60px;
 }
-/* ... (Bạn có thể copy style của .product-card vào đây nếu cần) */
+
+.no-results {
+    grid-column: 1 / -1;
+    /* Cho phép text chiếm hết chiều rộng của grid */
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-secondary);
+}
+
+
+/* --- STYLE CHO PRODUCT CARD (ĐỒNG BỘ VỚI CÁC TRANG KHÁC) --- */
+/* Thêm đoạn này vào để đảm bảo giao diện nhất quán */
+.product-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product-card .product-image {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.product-card .product-image img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.product-card .product-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card .product-name {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 10px;
+    min-height: 48px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-card .product-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    margin-top: auto;
+    /* Đẩy giá xuống dưới */
+}
+
+.product-card .btn-secondary {
+    width: 100%;
+}
+
+
+/* --- RESPONSIVE CHO TRANG TÌM KIẾM --- */
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 cột trên tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 cột trên mobile */
+        gap: 15px;
+    }
+
+    /* Tinh chỉnh card cho mobile */
+    .product-card .product-info {
+        padding: 15px;
+    }
+
+    .product-card .product-name {
+        font-size: 0.9rem;
+        min-height: 40px;
+    }
+
+    .product-card .product-price {
+        font-size: 1.1rem;
+    }
+}

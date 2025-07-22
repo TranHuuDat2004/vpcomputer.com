@@ -93,20 +93,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Gán hàm addToCart cục bộ vào biến addToCart toàn cục
-    addToCart = function (productId) {
+    addToCart = function (productId) { // << XÓA BỎ customPrice
         const productToAdd = allProducts.find(p => p.id === productId);
-        if (!productToAdd) {
-            console.error(`Không tìm thấy sản phẩm với ID: ${productId}`);
-            return;
-        }
+        if (!productToAdd) return;
 
         let newCart = [...cart];
         const existingItemIndex = newCart.findIndex(item => item.id === productId);
 
+        // Tự động tính giá chính xác bằng hàm toàn cục
+        const priceToUse = calculateSalePrice(productToAdd);
+
         if (existingItemIndex > -1) {
             newCart[existingItemIndex].quantity++;
+            // CẬP NHẬT: Đảm bảo giá luôn đúng nếu sản phẩm đã có trong giỏ
+            newCart[existingItemIndex].price = priceToUse;
         } else {
-            newCart.push({ ...productToAdd, quantity: 1 });
+            newCart.push({
+                ...productToAdd,
+                price: priceToUse, // << SỬ DỤNG GIÁ ĐÃ TÍNH
+                originalPrice: productToAdd.price, // Vẫn lưu giá gốc để hiển thị gạch ngang
+                quantity: 1
+            });
         }
 
         updateCartAndSave(newCart);
@@ -158,12 +165,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sự kiện click vào các nút "Thêm vào giỏ" trên toàn trang
     document.body.addEventListener('click', (e) => {
-        if (e.target.matches('.btn-secondary')) {
+        // Chỉ cần tìm nút có class .btn-secondary
+        const button = e.target.closest('.btn-secondary');
+        if (button) {
             e.preventDefault();
-            const productCard = e.target.closest('.product-card');
+            const productCard = button.closest('.product-card');
             if (productCard && productCard.dataset.id) {
-                addToCart(productCard.dataset.id);
-                openCart(); // Mở giỏ hàng khi thêm từ trang sản phẩm
+                const productId = productCard.dataset.id;
+                addToCart(productId); // Không cần truyền giá nữa
+                openCart();
             }
         }
     });

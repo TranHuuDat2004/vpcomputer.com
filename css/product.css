@@ -270,3 +270,22 @@
 }
 
 
+.product-price.sale .new-price {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+.product-price.sale .old-price {
+    color: var(--text-secondary);
+    text-decoration: line-through;
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.product-price {
+    margin-top: auto; /* Đẩy giá xuống dưới */
+}
