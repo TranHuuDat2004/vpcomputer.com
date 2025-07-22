@@ -194,7 +194,13 @@
     /* Thêm padding cho khối chứa nút */
     padding: 0 20px 20px 20px; /* Trên 0, Phải 20px, Dưới 20px, Trái 20px */
 }
+    .btn-toggle-filter {
+        display: none;
 
+    }
+.btn-close-filter {
+    display: none;
+}
 /* --- Responsive (ĐÃ NÂNG CẤP HOÀN CHỈNH) --- */
 
 /* --- Tablet (Từ 992px trở xuống) --- */

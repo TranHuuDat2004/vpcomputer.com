@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sortSelect = document.getElementById('sort');
     const toggleFilterBtn = document.getElementById('btn-toggle-filter');
     const filterSidebar = document.getElementById('filter-sidebar');
-
+    const closeFilterBtn = document.getElementById('btn-close-filter');
     // Thoát sớm nếu thiếu các thành phần quan trọng
     if (!productGrid || !categoryFilter || !priceFilter || !brandFilter || !sortSelect) {
         console.error("Thiếu các thành phần HTML cần thiết cho trang sản phẩm.");
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const salePrice = calculateSalePrice(product);
             let priceHTML = `<p class="product-price"><span class="price">${salePrice.toLocaleString('vi-VN')}₫</span></p>`;
             if (salePrice < product.price) {
-                priceHTML = `<p class="product-price sale"><span class="price">${salePrice.toLocaleString('vi-VN')}₫</span><del>${product.price.toLocaleString('vi-VN')}₫</del></p>`;
+                priceHTML = `<p class="product-price sale"><span class="price">${salePrice.toLocaleString('vi-VN')}₫</span>\n<del style="color:black; font-size:14px">${product.price.toLocaleString('vi-VN')}₫</del></p>`;
             }
             productCard.innerHTML = `<a href="product-detail.html?id=${product.id}" class="product-link"><div class="product-image"><img src="${product.image}" alt="${product.name}"></div><div class="product-info"><h3 class="product-name">${product.name}</h3>${priceHTML}</div></a><div class="product-actions"><button class="btn btn-secondary" ${isAvailable ? '' : 'disabled'}>${isAvailable ? 'Thêm vào giỏ' : product.stockStatus}</button></div>`;
             productGrid.appendChild(productCard);
@@ -121,8 +121,19 @@ document.addEventListener('DOMContentLoaded', () => {
     brandFilter.addEventListener('change', applyFilters);
     sortSelect.addEventListener('change', applyFilters);
 
+    // LOGIC MỚI CHO CÁC NÚT LỌC
+    if (toggleFilterBtn && filterSidebar) {
+        toggleFilterBtn.addEventListener('click', () => {
+            filterSidebar.classList.add('active');
+        });
+    }
+    if (closeFilterBtn && filterSidebar) {
+        closeFilterBtn.addEventListener('click', () => {
+            filterSidebar.classList.remove('active');
+        });
+    }
     populateBrandFilter();
     applyFilters(); // Áp dụng bộ lọc lần đầu tiên
     checkUrlForCategory(); // Kiểm tra URL để áp dụng bộ lọc từ link
-    
+
 });
