@@ -23,19 +23,19 @@ class FooterComponent extends HTMLElement {
                         <div class="footer-col">
                             <h4>Về chúng tôi</h4>
                             <ul>
-                                <li><a href="#">Giới thiệu</a></li>
-                                <li><a href="#">Tuyển dụng</a></li>
-                                <li><a href="#">Điều khoản dịch vụ</a></li>
-                                <li><a href="#">Chính sách bảo mật</a></li>
+                                <li><a href="about.html">Giới thiệu</a></li>
+                                <li><a href="careers.html">Tuyển dụng</a></li>
+                                <li><a href="terms.html">Điều khoản dịch vụ</a></li> <!-- THÊM MỚI -->
+                                <li><a href="privacy.html">Chính sách bảo mật</a></li> <!-- THÊM MỚI -->
                             </ul>
                         </div>
                         <div class="footer-col">
                             <h4>Hỗ trợ khách hàng</h4>
                             <ul>
-                                <li><a href="#">Hướng dẫn mua hàng</a></li>
-                                <li><a href="#">Chính sách bảo hành</a></li>
-                                <li><a href="#">Chính sách đổi trả</a></li>
-                                <li><a href="#">Câu hỏi thường gặp</a></li>
+        <li><a href="how-to-buy.html">Hướng dẫn mua hàng</a></li>
+        <li><a href="warranty.html">Chính sách bảo hành</a></li>
+        <li><a href="returns.html">Chính sách đổi trả</a></li> <!-- THÊM MỚI -->
+        <li><a href="faq.html">Câu hỏi thường gặp</a></li> <!-- THÊM MỚI -->
                             </ul>
                         </div>
                         <div class="footer-col">
@@ -56,7 +56,7 @@ class FooterComponent extends HTMLElement {
                 </div>
             </footer>
         `;
-        
+
         // Gắn HTML vào custom element
         this.innerHTML = footerHTML;
     }

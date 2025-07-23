@@ -44,43 +44,48 @@ body {
     font-size: 1.1rem;
 }
 
-/* --- Lưới sản phẩm --- */
+/* css/promotion.css */
+
+/* --- Lưới sản phẩm (ĐÃ HỢP NHẤT VÀ SỬA LỖI) --- */
 .promo-product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+grid-template-columns: repeat(4, 1fr); 
     gap: 20px;
 }
+
 
 /* --- Style Product Card (kiểu tờ rơi) --- */
 .promo-product-grid .product-card {
     background-color: #fff;
-    border: 2px solid #e0e0e0;
+    border: 1px solid var(--border-color); /* Viền mỏng hơn */
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .promo-product-grid .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
+/* --- Vùng chứa ảnh --- */
 .promo-product-grid .product-image {
-    aspect-ratio: 1/1;
+    padding: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    /* Giới hạn chiều cao của vùng chứa ảnh */
+    max-height: 180px; /* << BẠN CÓ THỂ ĐIỀU CHỈNH SỐ NÀY */
 }
-
 .promo-product-grid .product-image img {
-    max-width: 90%;
-    max-height: 90%;
+    /* Ảnh sẽ co giãn bên trong vùng chứa */
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
 }
 
+/* --- Vùng thông tin --- */
 .promo-product-grid .product-info {
     padding: 15px;
     border-top: 1px solid #eee;
@@ -89,38 +94,27 @@ body {
     display: flex;
     flex-direction: column;
 }
-
 .promo-product-grid .product-name {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
     color: var(--text-primary);
-    min-height: 40px;
-    /* 2 dòng */
+    min-height: 48px; /* 2 dòng */
     margin-bottom: 10px;
+    line-height: 1.5; /* Cải thiện khoảng cách dòng */
 }
-
 .promo-product-grid .product-price {
     margin-top: auto;
-    /* Đẩy giá xuống dưới */
 }
-
 .promo-product-grid .old-price {
     font-size: 0.9rem;
     color: var(--text-secondary);
     text-decoration: line-through;
     display: block;
-    /* Hiển thị trên 1 dòng riêng */
 }
-
 .promo-product-grid .new-price {
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--accent-color);
-}
-
-/* Nút Thêm vào giỏ không cần thiết trên layout này */
-.promo-product-grid .btn-secondary {
-    display: none;
 }
 
 /* Biến cả card thành link */
@@ -130,4 +124,21 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+/* --- Thêm khối Responsive cho chính Grid này --- */
+@media (max-width: 1200px) {
+    .promo-product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    .promo-product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 480px) {
+    .promo-product-grid {
+        grid-template-columns: 1fr; /* 1 cột trên điện thoại rất nhỏ */
+    }
 }

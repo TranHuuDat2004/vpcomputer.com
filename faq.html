@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câu Hỏi Thường Gặp (FAQ) - VP Computer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/faq.css">
+</head>
+<body>
+    <header-placeholder></header-placeholder>
+
+    <main class="faq-page">
+        <div class="container">
+            <h1>Câu Hỏi Thường Gặp (FAQ)</h1>
+            
+            <div class="faq-accordion">
+                <!-- Câu hỏi 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>VP Computer có giao hàng toàn quốc không?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Có. Chúng tôi hỗ trợ giao hàng trên toàn quốc thông qua các đối tác vận chuyển uy tín. Thời gian giao hàng dự kiến từ 2-5 ngày làm việc tùy thuộc vào địa chỉ của bạn.</p>
+                    </div>
+                </div>
+
+                <!-- Câu hỏi 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Tôi có thể tự xây dựng cấu hình và nhờ shop lắp ráp không?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Chắc chắn rồi! Đây là một trong những dịch vụ tốt nhất tại VP Computer. Bạn có thể sử dụng công cụ "Xây Dựng Cấu Hình" trên website để tự chọn linh kiện. Sau khi đặt hàng, đội ngũ kỹ thuật viên của chúng tôi sẽ lắp ráp, đi dây gọn gàng và cài đặt sẵn hệ điều hành miễn phí cho bạn.</p>
+                    </div>
+                </div>
+
+                 <!-- Câu hỏi 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Chính sách bảo hành được áp dụng như thế nào?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Tất cả sản phẩm đều được bảo hành chính hãng. Thời gian bảo hành tiêu chuẩn là từ 24-36 tháng tùy sản phẩm. Bạn có thể xem chi tiết các điều kiện và quy trình tại trang <a href="warranty.html">Chính sách bảo hành</a> của chúng tôi.</p>
+                    </div>
+                </div>
+
+                 <!-- Câu hỏi 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Shop có hỗ trợ trả góp không?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Hiện tại, chúng tôi đang làm việc với các đối tác tài chính để sớm ra mắt chương trình trả góp qua thẻ tín dụng. Vui lòng theo dõi fanpage và website để cập nhật thông tin mới nhất!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer-placeholder></footer-placeholder>
+    <aside id="cart-sidebar" class="cart-sidebar"></aside>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script>
+        // JS cho Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isOpen) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

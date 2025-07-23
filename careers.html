@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuyển Dụng - VP Computer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/careers.css">
+</head>
+<body>
+    <header-placeholder></header-placeholder>
+
+    <main>
+        <section class="careers-hero">
+            <div class="container">
+                <h1>Gia Nhập Đội Ngũ VP Computer</h1>
+                <p>Cùng chúng tôi xây dựng tương lai ngành công nghệ máy tính tại Việt Nam.</p>
+            </div>
+        </section>
+
+        <section class="job-listings">
+            <div class="container">
+                <h2 class="section-title">Các Vị Trí Đang Tuyển Dụng</h2>
+                
+                <!-- Vị trí 1 -->
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3>Nhân viên Tư vấn Kỹ thuật & Bán hàng</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> TP. Hồ Chí Minh</span>
+                            <span><i class="fas fa-briefcase"></i> Toàn thời gian</span>
+                        </div>
+                        <p class="job-description">Am hiểu về linh kiện PC, đam mê công nghệ, có khả năng tư vấn và xây dựng cấu hình cho khách hàng...</p>
+                    </div>
+                    <div class="job-apply">
+                        <a href="#apply-form" class="btn-apply">Ứng Tuyển Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Vị trí 2 -->
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3>Kỹ thuật viên Lắp ráp & Cài đặt</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> TP. Hồ Chí Minh</span>
+                            <span><i class="fas fa-briefcase"></i> Toàn thời gian</span>
+                        </div>
+                        <p class="job-description">Có kinh nghiệm lắp ráp PC, đi dây gọn gàng, cài đặt phần mềm và khắc phục sự cố máy tính cơ bản...</p>
+                    </div>
+                    <div class="job-apply">
+                        <a href="#apply-form" class="btn-apply">Ứng Tuyển Ngay</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="apply-section" id="apply-form">
+            <div class="container">
+                 <h2 class="section-title">Nộp Hồ Sơ Của Bạn</h2>
+                 <form class="apply-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Họ và tên" required>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="tel" placeholder="Số điện thoại" required>
+                        <input type="text" placeholder="Vị trí ứng tuyển" required>
+                    </div>
+                    <div class="form-row">
+                         <label for="cv-upload">Tải lên CV của bạn (PDF, DOC, DOCX):</label>
+                         <input type="file" id="cv-upload" name="cv" accept=".pdf,.doc,.docx" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Gửi Hồ Sơ</button>
+                 </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer-placeholder></footer-placeholder>
+    <aside id="cart-sidebar" class="cart-sidebar"></aside>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+</html>
