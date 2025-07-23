@@ -82,7 +82,7 @@ This work is licensed under a <a rel="license" href="http://creativecommons.org/
 *   **Phi thương mại (NonCommercial):** Bạn không được sử dụng tài liệu cho các mục đích thương mại.
 
 
-### **Hướng Dẫn Thay Đổi Bản Đồ Map (3 bước đơn giản)**
+### **Hướng Dẫn Thay Đổi Bản Đồ Map của trang `contact.html` (3 bước đơn giản)**
 
 #### **Bước 1: Tìm địa điểm của bạn trên Google Maps**
 1.  Truy cập vào [https://www.google.com/maps](https://www.google.com/maps).
