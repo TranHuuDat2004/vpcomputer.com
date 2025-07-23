@@ -14,7 +14,10 @@ class FooterComponent extends HTMLElement {
                 <div class="container">
                     <div class="footer-grid">
                         <div class="footer-col">
-                            <a href="index.html" class="logo">${brandName.split(' ')[0]} <span>${brandName.split(' ').slice(1).join(' ')}</span></a>
+                            <!-- ĐÃ THAY ĐỔI: Thay thế logo văn bản bằng logo hình ảnh -->
+                    <a href="index.html" class="logo">
+                        <img src="img/logo.png" alt="VP Computer Logo">
+                    </a>
                             <p>Chuyên cung cấp linh kiện PC, Gaming Gear chính hãng với giá tốt nhất thị trường. Hỗ trợ xây dựng cấu hình máy tính theo yêu cầu.</p>
                         </div>
                         <div class="footer-col">

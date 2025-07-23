@@ -124,14 +124,20 @@ header .container {
     align-items: center;
 }
 
+/* Đoạn code mới để style cho logo ảnh */
 .logo {
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: var(--text-primary);
+    display: inline-block; /* Đảm bảo thẻ <a> hoạt động đúng */
 }
 
-.logo span {
-    color: var(--primary-color);
+.logo img {
+    height: 40px; /* Chiều cao của logo, bạn có thể điều chỉnh */
+    width: auto; /* Chiều rộng sẽ tự động co giãn theo tỉ lệ */
+    display: block; /* Loại bỏ khoảng trắng thừa */
+}
+
+/* Style cho logo trong footer (nếu muốn nó to hơn một chút) */
+footer .logo img {
+    height: 45px;
 }
 
 .main-nav ul {

@@ -13,7 +13,9 @@ class HeaderComponent extends HTMLElement {
 
             <header>
                 <div class="container">
-                    <a href="index.html" class="logo">${brandName.split(' ')[0]} <span>${brandName.split(' ').slice(1).join(' ')}</span></a>
+                                <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="VP Computer Logo">
+            </a>
                     
 <nav class="main-nav desktop-nav">
                         <ul>
