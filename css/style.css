@@ -135,6 +135,17 @@ header .container {
     display: block; /* Loại bỏ khoảng trắng thừa */
 }
 
+/* Đoạn code mới để style cho logo ảnh */
+.login-logo {
+    display: inline-block; /* Đảm bảo thẻ <a> hoạt động đúng */
+}
+
+.login-logo img {
+    height: 80px; /* Chiều cao của logo, bạn có thể điều chỉnh */
+    width: auto; /* Chiều rộng sẽ tự động co giãn theo tỉ lệ */
+    display: block; /* Loại bỏ khoảng trắng thừa */
+}
+
 /* Style cho logo trong footer (nếu muốn nó to hơn một chút) */
 footer .logo img {
     height: 45px;

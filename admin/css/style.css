@@ -1,0 +1,379 @@
+/* admin/css/style.css (Phiên bản cuối cùng đã dọn dẹp) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+:root {
+    --bg-main: #f4f7fa;
+    --bg-sidebar: #ffffff;
+    --primary-color: #007bff;
+    --text-primary: #343a40;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+}
+
+.dashboard-layout {
+    display: flex;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-sidebar);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+    transition: left 0.3s ease;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    display: inline-block;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-nav a i {
+    font-size: 1.2rem;
+    width: 30px;
+}
+
+.sidebar-nav a.active,
+.sidebar-nav a:hover {
+    background-color: #e9ecef;
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.sidebar-footer a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 12px 20px;
+    /* Thêm padding cho cân đối */
+    border-radius: 6px;
+    /* Thêm bo góc */
+    transition: all 0.2s;
+}
+
+.sidebar-footer a i {
+    font-size: 1.2rem;
+    width: 30px;
+    /* Căn lề icon cho thẳng hàng với menu trên */
+}
+
+/* Thêm hiệu ứng hover màu đỏ */
+.sidebar-footer a:hover {
+    background-color: #f8d7da;
+    /* Nền đỏ nhạt */
+    color: #721c24;
+    /* Chữ đỏ sẫm */
+}
+
+/* --- Main Content --- */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px;
+    /* Tạo khoảng trống cho sidebar */
+    transition: margin-left 0.3s ease;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: transparent;
+    /* Thêm nền trắng */
+    padding: 10px 20px;
+    border-radius: 8px;
+
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-toggle {
+    display: none;
+    /* Ẩn trên desktop */
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.search-bar i {
+    color: var(--text-secondary);
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    font-size: 1rem;
+    width: 300px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-profile span {
+    font-weight: 500;
+}
+
+.content-body h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* --- Stats Cards --- */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.card:nth-child(1) .card-icon {
+    background-color: #28a745;
+}
+
+.card:nth-child(2) .card-icon {
+    background-color: #ffc107;
+}
+
+.card:nth-child(3) .card-icon {
+    background-color: #17a2b8;
+}
+
+.card-info p {
+    color: var(--text-secondary);
+}
+
+.card-info h3 {
+    font-size: 1.8rem;
+}
+
+/* --- Data Section --- */
+.data-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.chart-container,
+.recent-orders {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.chart-container h3,
+.recent-orders h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.status.pending {
+    background-color: #ffc107;
+}
+
+.status.completed {
+    background-color: #28a745;
+}
+
+.status.shipped {
+    background-color: #17a2b8;
+}
+
+/* THÊM VÀO TRƯỚC KHỐI RESPONSIVE */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    /* Nằm ngay dưới sidebar */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ======================= RESPONSIVE (ĐÃ NÂNG CẤP) ======================= */
+@media (max-width: 992px) {
+    .sidebar {
+        left: -250px;
+    }
+
+    .sidebar.active {
+        left: 0;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .main-header {
+        /* Bỏ justify-content: flex-start */
+        justify-content: space-between;
+        gap: 0;
+    }
+
+
+
+    .search-bar {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .user-profile {
+        margin-left: auto;
+    }
+
+    .data-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .user-profile span {
+        display: none;
+    }
+}

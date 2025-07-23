@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Đơn Hàng - Admin VP Computer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/orders.css">
+
+        <!-- Thêm dòng này vào trong thẻ <head> của mỗi file HTML -->
+<link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <admin-sidebar></admin-sidebar>
+        <div class="overlay" id="overlay"></div>
+
+        <main class="main-content">
+            <admin-header></admin-header>
+            
+            <div class="content-body">
+                <div class="page-header">
+                    <h1>Quản Lý Đơn Hàng</h1>
+                    <!-- Bộ lọc đơn hàng -->
+                    <div class="filters">
+                        <select id="status-filter">
+                            <option value="all">Tất cả trạng thái</option>
+                            <option value="pending">Chờ xử lý</option>
+                            <option value="shipped">Đang giao</option>
+                            <option value="completed">Đã giao</option>
+                            <option value="cancelled">Đã hủy</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="order-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Mã ĐH</th>
+                                <th>Khách hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Tổng tiền</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-table-body">
+                            <!-- Dữ liệu đơn hàng sẽ được JS chèn vào đây -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script -->
+    <script src="js/sidebar.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/orders.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm - Admin VP Computer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css"> <!-- CSS chung của Dashboard -->
+    <link rel="stylesheet" href="css/products.css"> <!-- CSS riêng cho trang sản phẩm -->
+
+        <!-- Thêm dòng này vào trong thẻ <head> của mỗi file HTML -->
+<link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar tự động -->
+        <admin-sidebar></admin-sidebar>
+
+        <!-- Nội dung chính -->
+        <main class="main-content">
+            <!-- ĐÃ THAY THẾ -->
+            <admin-header></admin-header>
+            
+            <div class="content-body">
+                <div class="page-header">
+                    <h1>Quản Lý Sản Phẩm</h1>
+                    <button class="btn btn-primary"><i class="fas fa-plus"></i> Thêm Sản Phẩm Mới</button>
+                </div>
+
+                <!-- Bảng quản lý sản phẩm -->
+                <div class="product-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <!-- <th><input type="checkbox" id="select-all"></th> -->
+                                <th></th>
+                                <th>Sản phẩm</th>
+                                <th>Mã SKU</th>
+                                <th>Giá</th>
+                                <th>Tồn kho</th>
+                                <th>Danh mục</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-body">
+                            <!-- Dữ liệu sản phẩm sẽ được JS chèn vào đây -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script -->
+    <script src="../js/data.js"></script> <!-- << Lấy data từ thư mục gốc -->
+    <script src="js/sidebar.js"></script>
+    <script src="js/products.js"></script>
+
+    <script src="js/header.js"></script> <!-- << THÊM VÀO ĐÂY -->
+</body>
+</html>

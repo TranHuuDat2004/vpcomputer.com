@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - VP Computer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/login.css">
+
+        <!-- Thêm dòng này vào trong thẻ <head> của mỗi file HTML -->
+<link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <div class="auth-page-wrapper">
+        <div class="auth-container">
+            <!-- Phần hình ảnh bên trái -->
+            <div class="auth-image-panel">
+                <!-- Thay thế ảnh này bằng ảnh thương hiệu của bạn -->
+                <img src="img/create-account-office.jpeg" alt="Admin Panel Image">
+            </div>
+
+            <!-- Phần form bên phải -->
+            <div class="auth-form-panel">
+                <div class="form-wrapper">
+                    <a href="../index.html" class="home-link logo"><img src="img/logo.png" alt="VP Computer Logo"></a>
+                    <h1>Trang quản trị</h1>
+                    <form id="admin-login-form" action="index.html">
+                        <div class="form-group">
+                            <label for="username">Tên đăng nhập</label>
+                            <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu</label>
+                            <input type="password" id="password" name="password" placeholder="••••••••••" required>
+                        </div>
+                        <button type="submit" class="btn-login">Đăng Nhập</button>
+                    </form>
+                    <div class="form-footer">
+                        <a href="#">Quên mật khẩu?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Giả lập logic đăng nhập -->
+    <script>
+        document.getElementById('admin-login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'admin' && password === '123456') {
+                alert('Đăng nhập thành công!');
+                window.location.href = 'index.html'; 
+            } else {
+                alert('Tên đăng nhập hoặc mật khẩu không chính xác!');
+            }
+        });
+    </script>
+</body>
+</html>

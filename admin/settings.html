@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài Đặt - Admin VP Computer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <admin-sidebar></admin-sidebar>
+        <div class="overlay" id="overlay"></div>
+
+        <main class="main-content">
+            <admin-header></admin-header>
+            
+            <div class="content-body">
+                <h1>Cài Đặt Hệ Thống</h1>
+
+                <div class="settings-layout">
+                    <!-- Menu điều hướng của trang cài đặt -->
+                    <div class="settings-nav">
+                        <a href="#" class="nav-item active" data-tab="general">
+                            <i class="fas fa-cog"></i>
+                            <span>Thông tin chung</span>
+                        </a>
+                        <a href="#" class="nav-item" data-tab="account">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Tài khoản & Bảo mật</span>
+                        </a>
+                        <a href="#" class="nav-item" data-tab="appearance">
+                            <i class="fas fa-palette"></i>
+                            <span>Giao diện</span>
+                        </a>
+                    </div>
+
+                    <!-- Nội dung các tab -->
+                    <div class="settings-content">
+                        <!-- Tab 1: Thông tin chung -->
+                        <div class="tab-pane active" id="general">
+                            <h2>Thông tin chung</h2>
+                            <form class="settings-form">
+                                <div class="form-group">
+                                    <label for="shop-name">Tên cửa hàng</label>
+                                    <input type="text" id="shop-name" value="VP Computer">
+                                </div>
+                                <div class="form-group">
+                                    <label for="shop-hotline">Hotline</label>
+                                    <input type="text" id="shop-hotline" value="1900 1234">
+                                </div>
+                                <div class="form-group">
+                                    <label for="shop-email">Email hỗ trợ</label>
+                                    <input type="email" id="shop-email" value="support@vpcomputer.vn">
+                                </div>
+                                <div class="form-group">
+                                    <label for="shop-address">Địa chỉ</label>
+                                    <textarea id="shop-address" rows="3">123 Đường ABC, Phường X, Quận Y, TP.HCM</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                            </form>
+                        </div>
+
+                        <!-- Tab 2: Tài khoản & Bảo mật -->
+                        <div class="tab-pane" id="account">
+                            <h2>Tài khoản & Bảo mật</h2>
+                            <form class="settings-form">
+                                <div class="form-group">
+                                    <label for="admin-email">Email đăng nhập</label>
+                                    <input type="email" id="admin-email" value="admin@vpcomputer.vn" disabled>
+                                </div>
+                                <hr>
+                                <h4>Đổi mật khẩu</h4>
+                                <div class="form-group">
+                                    <label for="current-password">Mật khẩu hiện tại</label>
+                                    <input type="password" id="current-password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password">Mật khẩu mới</label>
+                                    <input type="password" id="new-password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Xác nhận mật khẩu mới</label>
+                                    <input type="password" id="confirm-password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Cập nhật mật khẩu</button>
+                            </form>
+                        </div>
+
+                        <!-- Tab 3: Giao diện -->
+                        <div class="tab-pane" id="appearance">
+                            <h2>Giao diện</h2>
+                            <form class="settings-form">
+                               <div class="form-group">
+                                    <label for="logo-upload">Tải lên Logo</label>
+                                    <input type="file" id="logo-upload">
+                                </div>
+                                <div class="form-group">
+                                    <label for="favicon-upload">Tải lên Favicon</label>
+                                    <input type="file" id="favicon-upload">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script -->
+    <script src="js/sidebar.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>

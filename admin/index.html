@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - VP Computer</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+        <!-- Thêm dòng này vào trong thẻ <head> của mỗi file HTML -->
+<link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+
+        <!-- ======================= SIDEBAR (ĐÃ THAY THẾ) ======================= -->
+        <admin-sidebar></admin-sidebar>
+        <!-- THÊM LỚP PHỦ VÀO ĐÂY -->
+        <div class="overlay" id="overlay"></div>
+        <!-- ======================= MAIN CONTENT ======================= -->
+        <main class="main-content">
+            <!-- Header của nội dung chính -->
+
+            <!-- ĐÃ THAY THẾ -->
+            <admin-header></admin-header>
+
+            <!-- Phần nội dung chính -->
+            <div class="content-body">
+                <h1>Tổng Quan</h1>
+
+                <!-- Các thẻ thống kê nhanh -->
+                <div class="stats-cards">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="card-info">
+                            <p>Doanh thu hôm nay</p>
+                            <h3>25.650.000₫</h3>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-shopping-bag"></i></div>
+                        <div class="card-info">
+                            <p>Đơn hàng mới</p>
+                            <h3>12</h3>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-user-plus"></i></div>
+                        <div class="card-info">
+                            <p>Khách hàng mới</p>
+                            <h3>8</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biểu đồ và danh sách -->
+                <div class="data-section">
+                    <!-- Biểu đồ doanh thu -->
+                    <div class="chart-container">
+                        <h3>Doanh thu 7 ngày qua</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <!-- Đơn hàng gần đây -->
+                    <div class="recent-orders">
+                        <h3>Đơn hàng gần đây</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mã ĐH</th>
+                                    <th>Khách hàng</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#VPC-1025</td>
+                                    <td>Nguyễn Văn A</td>
+                                    <td>15.500.000₫</td>
+                                    <td><span class="status pending">Chờ xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#VPC-1024</td>
+                                    <td>Trần Thị B</td>
+                                    <td>8.290.000₫</td>
+                                    <td><span class="status completed">Đã giao</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#VPC-1023</td>
+                                    <td>Lê Văn C</td>
+                                    <td>49.990.000₫</td>
+                                    <td><span class="status shipped">Đang giao</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Thư viện Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard.js"></script>
+    <!-- THÊM SCRIPT CỦA SIDEBAR VÀO ĐÂY -->
+    <script src="js/sidebar.js"></script>
+
+    <script src="js/header.js"></script> <!-- << THÊM VÀO ĐÂY -->
+</body>
+
+</html>

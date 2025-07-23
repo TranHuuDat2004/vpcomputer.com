@@ -1,0 +1,99 @@
+/* admin/css/settings.css */
+.settings-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 30px;
+}
+
+/* --- Menu điều hướng --- */
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.settings-nav .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+.settings-nav .nav-item:hover {
+    background-color: #e9ecef;
+    color: var(--text-primary);
+}
+.settings-nav .nav-item.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* --- Nội dung Tab --- */
+.settings-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+.tab-pane {
+    display: none;
+}
+.tab-pane.active {
+    display: block;
+}
+.settings-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+.settings-form .form-group {
+    margin-bottom: 20px;
+}
+.settings-form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.settings-form input,
+.settings-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+.settings-form hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 30px 0;
+}
+.settings-form h4 {
+    margin-bottom: 20px;
+}
+.btn.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .settings-layout {
+        grid-template-columns: 1fr;
+    }
+    .settings-nav {
+        flex-direction: row;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        overflow-x: auto;
+    }
+}

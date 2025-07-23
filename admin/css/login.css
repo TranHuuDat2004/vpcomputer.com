@@ -1,0 +1,176 @@
+/* admin/css/login.css (Phiên bản Split Screen chuyên nghiệp) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+:root {
+    --bg-page: #f4f7fa;
+    --bg-card: #ffffff;
+    --primary-color: #5a67d8;
+    /* Màu xanh tím nhẹ nhàng */
+    --text-primary: #2d3748;
+    --text-secondary: #718096;
+    --border-color: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+}
+
+.auth-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-container {
+    display: flex;
+    width: 100%;
+    max-width: 960px;
+    /* Chiều rộng tổng thể */
+    min-height: 600px;
+    background-color: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* --- Phần hình ảnh bên trái --- */
+.auth-image-panel {
+    flex-basis: 45%;
+    /* Chiếm 45% */
+    background-color: #333;
+    display: none;
+    /* Ẩn trên mobile */
+}
+
+.auth-image-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Phần form bên phải --- */
+.auth-form-panel {
+    flex-basis: 55%;
+    /* Chiếm 55% */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.home-link {
+    display: block;
+    text-align: right;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.form-wrapper h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--bg-page);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.2);
+}
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    filter: brightness(1.1);
+}
+
+.form-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (min-width: 768px) {
+    .auth-image-panel {
+        display: block;
+        /* Hiện lại ảnh trên màn hình lớn hơn */
+    }
+}
+
+@media (max-width: 767px) {
+    .auth-form-panel {
+        flex-basis: 100%;
+    }
+}
+
+/* Đoạn code mới để style cho logo ảnh */
+.logo {
+    display: inline-block;
+    /* Đảm bảo thẻ <a> hoạt động đúng */
+}
+
+.logo img {
+    height: 40px;
+    /* Chiều cao của logo, bạn có thể điều chỉnh */
+    width: auto;
+    /* Chiều rộng sẽ tự động co giãn theo tỉ lệ */
+    display: block;
+    /* Loại bỏ khoảng trắng thừa */
+}

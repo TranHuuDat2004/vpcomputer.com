@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo - Admin VP Computer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reports.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <admin-sidebar></admin-sidebar>
+        <div class="overlay" id="overlay"></div>
+
+        <main class="main-content">
+            <admin-header></admin-header>
+            <div class="charts-section">
+                    <!-- Tab Navigation -->
+                    <div class="charts-nav">
+                        <button class="nav-item active" data-chart="revenueProfitChart">Doanh Thu & Lợi Nhuận</button>
+                        <button class="nav-item" data-chart="categoryChart">Theo Danh Mục</button>
+                        <button class="nav-item" data-chart="topProductsChart">Top Sản Phẩm</button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="charts-content">
+                        <!-- Pane 1: Biểu đồ đường -->
+                        <div class="chart-pane active" id="pane-revenueProfitChart">
+                             <canvas id="revenueProfitChart"></canvas>
+                        </div>
+                        <!-- Pane 2: Biểu đồ tròn -->
+                        <div class="chart-pane" id="pane-categoryChart">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                        <!-- Pane 3: Biểu đồ cột -->
+                        <div class="chart-pane" id="pane-topProductsChart">
+                            <canvas id="topProductsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            <div class="content-body">
+                <div class="page-header">
+                    <h1>Báo Cáo Doanh Thu</h1>
+                    <div class="date-filter">
+                        <select id="time-range-filter">
+                            <option value="last7days">7 ngày qua</option>
+                            <option value="last30days">30 ngày qua</option>
+                            <option value="this_month">Tháng này</option>
+                            <option value="last_month">Tháng trước</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Các thẻ thống kê chính -->
+                <div class="report-stats-cards">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                        <div class="card-info">
+                            <p>Tổng Doanh Thu</p>
+                            <h3 id="total-revenue">0₫</h3>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                        <div class="card-info">
+                            <p>Lợi Nhuận (Ước tính)</p>
+                            <h3 id="total-profit">0₫</h3>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="card-info">
+                            <p>Tổng Đơn Hàng</p>
+                            <h3 id="total-orders">0</h3>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-box-open"></i></div>
+                        <div class="card-info">
+                            <p>Sản Phẩm Đã Bán</p>
+                            <h3 id="total-products-sold">0</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Các biểu đồ -->
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Biểu đồ Doanh Thu & Lợi Nhuận</h3>
+                        <canvas id="revenueProfitChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Tỷ Lệ Sản Phẩm Theo Danh Mục</h3>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                    <div class="chart-container large-chart">
+                        <h3>Top 5 Sản Phẩm Bán Chạy</h3>
+                        <canvas id="topProductsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+</html>
