@@ -55,7 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td data-label="Ngày đăng ký">${customer.joinDate}</td>
                 <td data-label="Hành động">
                     <div class="action-buttons">
-                        <button class="action-btn edit" title="Sửa"><i class="fas fa-edit"></i></button>
+                        <!-- SỬA LẠI NÚT NÀY -->
+                        <a href="edit-customer.html?id=${customer.id}" class="action-btn edit" title="Sửa">
+                            <i class="fas fa-edit"></i>
+                        </a>
                         <button class="action-btn delete" title="Xóa"><i class="fas fa-user-slash"></i></button>
                     </div>
                 </td>

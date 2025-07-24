@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh Sửa Sản Phẩm - Admin VP Computer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/edit-product.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <admin-sidebar></admin-sidebar>
+        <div class="overlay" id="overlay"></div>
+
+        <main class="main-content">
+            <admin-header></admin-header>
+            
+            <div class="content-body">
+                <div class="page-header">
+                    <h1>Chỉnh Sửa Sản Phẩm</h1>
+                    <a href="products.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay Lại Danh Sách</a>
+                </div>
+
+                <div class="edit-form-container">
+                    <form id="edit-product-form">
+                        <!-- Dữ liệu sẽ được JS điền vào đây -->
+                        <div class="loading-spinner">Loading...</div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script -->
+    <script src="../js/data.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/edit-product.js"></script>
+</body>
+</html>

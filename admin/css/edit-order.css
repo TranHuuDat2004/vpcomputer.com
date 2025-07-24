@@ -1,0 +1,92 @@
+/* admin/css/edit-order.css */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+}
+
+.btn-back {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    /* ... */
+}
+
+.order-detail-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.card-main,
+.card-sub {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.card-header {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.order-items-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-items-table th,
+.order-items-table td {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.order-items-table .product-cell img {
+    width: 40px;
+    height: 40px;
+    /* ... */
+}
+
+.customer-info-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 5px 10px;
+}
+
+.customer-info-grid dt {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+#status-update-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#status-update-form select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+#status-update-form .btn-save {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    /* ... */
+}
+
+@media (max-width: 992px) {
+    .order-detail-layout {
+        grid-template-columns: 1fr;
+    }
+}

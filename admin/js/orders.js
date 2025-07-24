@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: '#VPC-1025', customer: 'Nguyễn Văn A', phone: '0901234567', date: '21/07/2025', total: 15500000, status: 'pending' },
         { id: '#VPC-1024', customer: 'Trần Thị B', phone: '0907654321', date: '21/07/2025', total: 8290000, status: 'completed' },
         { id: '#VPC-1023', customer: 'Lê Văn C', phone: '0988888888', date: '20/07/2025', total: 49990000, status: 'shipped' },
-        { id: '#VPC-1022', customer: 'Phạm Thị D', phone: '0912345678', date: '19/07/2025', total: 5490000, status: 'cancelled' },
     ];
     
     const tableBody = document.getElementById('order-table-body');
@@ -44,7 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
                 <td data-label="Hành động">
                     <div class="action-buttons">
-                        <button class="action-btn view" title="Xem chi tiết"><i class="fas fa-eye"></i></button>
+                        <!-- SỬA LẠI NÚT NÀY -->
+                        <a href="edit-order.html?id=${order.id.replace('#', '')}" class="action-btn view" title="Xem chi tiết">
+                            <i class="fas fa-eye"></i>
+                        </a>
                         <button class="action-btn edit" title="Cập nhật trạng thái"><i class="fas fa-edit"></i></button>
                     </div>
                 </td>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh Sửa Khách Hàng - Admin VP Computer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/edit-customer.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <admin-sidebar></admin-sidebar>
+        <div class="overlay" id="overlay"></div>
+
+        <main class="main-content">
+            <admin-header></admin-header>
+            
+            <div class="content-body" id="customer-edit-container">
+                <!-- Nội dung sẽ được JS chèn vào đây -->
+                <div class="loading-spinner">Loading...</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script -->
+    <script src="js/customer-manager.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/edit-customer.js"></script>
+</body>
+</html>

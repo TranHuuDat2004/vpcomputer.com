@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (product.stockStatus !== 'Còn hàng') {
                 stockStatusClass = 'out-of-stock';
             }
-            
-           const row = document.createElement('tr');
+
+            const row = document.createElement('tr');
             // THÊM CÁC THUỘC TÍNH data-label VÀO ĐÂY
             row.innerHTML = `
                 <td><input type="checkbox"></td>
@@ -38,12 +38,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td data-label="Danh mục">${product.category}</td>
                 <td data-label="Hành động">
                     <div class="action-buttons">
-                        <button class="action-btn edit" title="Sửa"><i class="fas fa-edit"></i></button>
+                        <!-- SỬA LẠI NÚT NÀY -->
+                    <a href="edit-product.html?id=${product.id}" class="action-btn edit" title="Sửa">
+                        <i class="fas fa-edit"></i>
+                    </a>
                         <button class="action-btn delete" title="Xóa"><i class="fas fa-trash"></i></button>
                     </div>
                 </td>
             `;
             tableBody.appendChild(row);
+
+            // XÓA BỎ VIỆC GẮN SỰ KIỆN CŨ
+        // row.querySelector('.edit').addEventListener('click', () => openEditModal(product.id));
         });
 
     }
