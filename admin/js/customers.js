@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
             id: 'cust1', 
             name: 'Nguyễn Văn A', 
-            avatar: 'https://via.placeholder.com/40/28a745/ffffff?text=A', 
+            avatar: 'img/a.jpg', 
             email: 'nguyenvana@email.com', 
             phone: '0901234567', 
             totalSpent: 15500000, 
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
             id: 'cust2', 
             name: 'Trần Thị B', 
-            avatar: 'https://via.placeholder.com/40/ffc107/333333?text=B', 
+            avatar: 'img/b.jpg', 
             email: 'tranthib@email.com', 
             phone: '0907654321', 
             totalSpent: 8290000, 
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
             id: 'cust3', 
             name: 'Lê Văn C', 
-            avatar: 'https://via.placeholder.com/40/17a2b8/ffffff?text=C', 
+            avatar: 'img/c.jpg', 
             email: 'levanc@email.com', 
             phone: '0988888888', 
             totalSpent: 49990000, 
