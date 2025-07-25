@@ -88,7 +88,7 @@ Các hướng dẫn kỹ thuật chi tiết và các quy trình quản lý dự 
 
 *   **[Hướng dẫn Export Dữ liệu từ MongoDB Compass](./exportMongodb.md)**
 *   **[Hướng Dẫn Thay Đổi Bản Đồ Map của trang contact.html](./googleMaps.md)**
-*   **[Lấy link ảnh bằng raw github](./rawImageGithub..md)**
+*   **[Lấy link ảnh bằng raw github](./rawImageGithub.md)**
 
 
 ## ✒️ Tác giả
