@@ -16,11 +16,79 @@
     <!-- Font Awesome (for icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+    <!-- 1. Tích hợp CSS của Driver.js (Tour) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+
     <!-- Your Custom CSS -->
     <link rel="stylesheet" href="css/style.css"> <!-- File CSS chung -->
     <link rel="stylesheet" href="css/index.css">
-    <!-- Thêm dòng này vào trong thẻ <head> của mỗi file HTML -->
-<link rel="icon" type="image/png" href="img/favicon.png">
+    
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <style>
+        /* CSS cho nút Help/Tour - Đặt cố định góc màn hình */
+        .tour-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #e31837; /* Màu đỏ theo style PC Master/VP Computer */
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(227, 24, 55, 0.4);
+            z-index: 9999; /* Luôn nổi lên trên */
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .tour-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            background-color: #c2152e;
+        }
+
+        /* Tùy chỉnh giao diện Driver.js cho hợp web bán hàng */
+        .driver-popover.driverjs-theme {
+            background-color: #fff;
+            color: #333;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .driver-popover.driverjs-theme .driver-popover-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #e31837; /* Màu đỏ chủ đạo */
+        }
+        
+        .driver-popover.driverjs-theme .driver-popover-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .driver-popover.driverjs-theme button {
+            background-color: #e31837;
+            color: #fff;
+            text-shadow: none;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+        
+        .driver-popover.driverjs-theme button:hover {
+            background-color: #c2152e;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,34 +96,27 @@
     <!-- ======================= HEADER ======================= -->
     <header-placeholder></header-placeholder>
 
+    <!-- 2. Nút kích hoạt lại Tour -->
+    <div class="tour-btn" id="start-tour-btn" title="Hướng dẫn mua hàng">?</div>
+
     <main>
 
         <!-- ======================= SLIDER SECTION ======================= -->
-        <section class="slider-section-wrapper"> <!-- << THÊM KHỐI BAO BỌC NÀY -->
+        <section class="slider-section-wrapper">
             <div class="slider-container">
                 <!-- Vùng chứa các slide -->
                 <div class="slider-wrapper">
                     <div class="slide">
                         <img src="img/slide/slide1.jpg" alt="Banner Combo Siêu Tốc">
                     </div>
-                    <!-- <div class="slide">
-                <img src="img/slide/slide2.jpg" alt="Banner Khai trương rộn ràng">
-            </div>
-            <div class="slide">
-                <img src="img/slide/slide3.jpg" alt="Banner Khai trương rộn ràng">
-            </div>
-            <div class="slide">
-                <img src="img/slide/slide4.jpg" alt="Banner Khai trương rộn ràng">
-            </div> -->
                     <div class="slide">
                         <img src="img/slide/slide5.jpg" alt="Banner Khai trương rộn ràng">
                     </div>
                 </div>
 
-                <!-- Nút điều hướng Trước/Sau (ĐÃ SỬA LỖI CÚ PHÁP) -->
-                <button class="slider-btn prev-btn">
-                    < </button>
-                        <button class="slider-btn next-btn">></button>
+                <!-- Nút điều hướng Trước/Sau -->
+                <button class="slider-btn prev-btn"><</button>
+                <button class="slider-btn next-btn">></button>
             </div>
 
             <!-- Các tab điều hướng bên dưới -->
@@ -68,27 +129,14 @@
                     <h4>KHAI TRƯƠNG RỘN RÀNG</h4>
                     <p>Ngập tràn quà tặng</p>
                 </div>
-                <!-- <div class="nav-tab">
-            <h4>KHAI TRƯƠNG RỘN RÀNG</h4>
-            <p>Ngập tràn quà tặng</p>
-        </div>
-                <div class="nav-tab">
-            <h4>KHAI TRƯƠNG RỘN RÀNG</h4>
-            <p>Ngập tràn quà tặng</p>
-        </div>
-                <div class="nav-tab">
-            <h4>KHAI TRƯƠNG RỘN RÀNG</h4>
-            <p>Ngập tràn quà tặng</p> -->
             </div>
-            </div>
-        </section> <!-- << VÀ KẾT THÚC KHỐI BAO BỌC Ở ĐÂY -->
+        </section>
 
         <!-- ======================= CATEGORIES ======================= -->
         <section class="categories section-padding">
             <div class="container">
                 <h2 class="section-title">Danh Mục Nổi Bật</h2>
                 <div class="category-grid">
-                    <!-- THAY ĐỔI CÁC ĐƯỜNG LINK Ở ĐÂY -->
                     <a href="product.html?category=cpu" class="category-item">
                         <i class="fas fa-microchip"></i>
                         <span>CPU - Vi Xử Lý</span>
@@ -109,7 +157,6 @@
                         <i class="fas fa-bolt"></i>
                         <span>PSU - Nguồn</span>
                     </a>
-                    <!-- ... các danh mục khác ... -->
                 </div>
             </div>
         </section>
@@ -124,39 +171,17 @@
             </div>
         </section>
 
-        <!-- ======================= PROMO BANNER ======================= -->
-        <!-- <section class="promo-banner">
-            <div class="container">
-                <h4>KHUYẾN MÃI BLACK FRIDAY</h4>
-                <h2>GIẢM SỐC TỚI 50% TOÀN BỘ GAMING GEAR</h2>
-                <a href="#" class="btn btn-primary">Xem Ngay</a>
-            </div>
-        </section> -->
-
-        <!-- ======================= BRANDS (Cấu trúc mới) ======================= -->
+        <!-- ======================= BRANDS ======================= -->
         <section class="brands section-padding">
             <div class="container">
                 <h2 class="section-title">Đối Tác Thương Hiệu</h2>
                 <div class="brand-logos">
-                    <!-- Gói mỗi logo vào một div.brand-item -->
-                    <div class="brand-item">
-                        <img src="img/logo/intel.png" alt="Intel">
-                    </div>
-                    <div class="brand-item">
-                        <img src="img/logo/AMD.png" alt="AMD">
-                    </div>
-                    <div class="brand-item">
-                        <img src="img/logo/NVIDIA.png" alt="NVIDIA">
-                    </div>
-                    <div class="brand-item">
-                        <img src="img/logo/Corsair.png" alt="Corsair">
-                    </div>
-                    <div class="brand-item">
-                        <img src="img/logo/ASUS.png" alt="ASUS">
-                    </div>
-                    <div class="brand-item">
-                        <img src="img/logo/Gigabyte.png" alt="Gigabyte">
-                    </div>
+                    <div class="brand-item"><img src="img/logo/intel.png" alt="Intel"></div>
+                    <div class="brand-item"><img src="img/logo/AMD.png" alt="AMD"></div>
+                    <div class="brand-item"><img src="img/logo/NVIDIA.png" alt="NVIDIA"></div>
+                    <div class="brand-item"><img src="img/logo/Corsair.png" alt="Corsair"></div>
+                    <div class="brand-item"><img src="img/logo/ASUS.png" alt="ASUS"></div>
+                    <div class="brand-item"><img src="img/logo/Gigabyte.png" alt="Gigabyte"></div>
                 </div>
             </div>
         </section>
@@ -166,20 +191,103 @@
     <!-- ======================= FOOTER ======================= -->
     <footer-placeholder></footer-placeholder>
 
-    <!-- THÊM "VỊ TRÍ CHỜ" CHO GIỎ HÀNG VÀO ĐÂY -->
+    <!-- VỊ TRÍ CHỜ CHO GIỎ HÀNG -->
     <aside id="cart-sidebar" class="cart-sidebar"></aside>
 
     <!-- SCRIPT -->
 
     <!-- 2. Tải các component Header/Footer -->
-    <script src="js/data.js"></script> <!-- << Tải dữ liệu ĐẦU TIÊN -->
-    <script src="js/cart.js"></script> <!-- << THÊM VÀO ĐÂY -->
+    <script src="js/data.js"></script> 
+    <script src="js/cart.js"></script> 
 
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
 
     <!-- 3. Tải file script của trang (dùng Swiper) SAU CÙNG -->
     <script src="js/index.js"></script>
+
+    <!-- 4. Tích hợp Script của Driver.js & Cấu hình Tour -->
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // Định nghĩa Tour
+            const driver = window.driver.js.driver;
+            
+            const driverObj = driver({
+                showProgress: true,
+                animate: true,
+                doneBtnText: 'Bắt đầu mua sắm!',
+                nextBtnText: 'Tiếp theo',
+                prevBtnText: 'Quay lại',
+                popoverClass: 'driverjs-theme', // Sử dụng style tùy chỉnh
+                steps: [
+                    { 
+                        element: '.slider-section-wrapper', 
+                        popover: { 
+                            title: 'Săn Deal Khủng! 🔥', 
+                            description: 'Đừng bỏ lỡ các chương trình khuyến mãi và combo linh kiện giá hời tại đây.', 
+                            side: "bottom", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.categories', 
+                        popover: { 
+                            title: 'Tìm kiếm nhanh 🔍', 
+                            description: 'Bạn cần nâng cấp gì? CPU, VGA hay RAM? Chọn danh mục tại đây để tìm nhanh nhé.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#featured-product-grid', 
+                        popover: { 
+                            title: 'Top Bán Chạy ⭐', 
+                            description: 'Những linh kiện được anh em game thủ săn đón nhiều nhất tháng qua.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#cart-sidebar', 
+                        popover: { 
+                            title: 'Giỏ hàng của bạn 🛒', 
+                            description: 'Kiểm tra lại các món đồ đã chọn và tiến hành thanh toán tại đây.', 
+                            side: "left", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '#start-tour-btn', 
+                        popover: { 
+                            title: 'Cần hỗ trợ? 💁‍♂️', 
+                            description: 'Bấm vào nút này bất cứ lúc nào nếu bạn cần xem lại hướng dẫn nhé.', 
+                            side: "left", 
+                            align: 'center' 
+                        } 
+                    }
+                ]
+            });
+
+            // Tự động chạy lần đầu tiên truy cập
+            const hasSeenShopTour = localStorage.getItem('hasSeenShopTour');
+            
+            // Dùng setTimeout để đảm bảo các element đã render xong (đặc biệt là sản phẩm từ JS)
+            if (!hasSeenShopTour) {
+                setTimeout(() => {
+                    driverObj.drive();
+                    localStorage.setItem('hasSeenShopTour', 'true');
+                }, 1500); // Đợi 1.5s cho web load ổn định
+            }
+
+            // Gán sự kiện cho nút ?
+            document.getElementById('start-tour-btn').addEventListener('click', () => {
+                driverObj.drive();
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -11,15 +11,86 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+    <!-- 1. Tích hợp CSS của Driver.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+
     <!-- Đã cập nhật đường dẫn -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/builder.css">
-    <!-- Thêm dòng này vào trong thẻ <head> của mỗi file HTML -->
-<link rel="icon" type="image/png" href="img/favicon.png">
+    
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <style>
+        /* CSS cho nút Help/Tour - Đồng bộ với trang chủ */
+        .tour-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #e31837;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(227, 24, 55, 0.4);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .tour-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            background-color: #c2152e;
+        }
+
+        /* Tùy chỉnh giao diện Driver.js */
+        .driver-popover.driverjs-theme {
+            background-color: #fff;
+            color: #333;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .driver-popover.driverjs-theme .driver-popover-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #e31837;
+        }
+        
+        .driver-popover.driverjs-theme .driver-popover-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .driver-popover.driverjs-theme button {
+            background-color: #e31837;
+            color: #fff;
+            text-shadow: none;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+        
+        .driver-popover.driverjs-theme button:hover {
+            background-color: #c2152e;
+        }
+    </style>
 </head>
 
 <body>
     <header-placeholder></header-placeholder>
+
+    <!-- 2. Nút kích hoạt lại Tour -->
+    <div class="tour-btn" id="start-tour-btn" title="Hướng dẫn build PC">?</div>
 
     <main class="builder-main">
         <div class="container">
@@ -115,12 +186,93 @@
     <aside id="cart-sidebar" class="cart-sidebar"></aside>
 
     <!-- SCRIPT: LUÔN ĐẶT Ở CUỐI BODY -->
-    <script src="js/data.js"></script> <!-- << Tải dữ liệu ĐẦU TIÊN -->
+    <script src="js/data.js"></script> 
 
-    <script src="js/cart.js"></script> <!-- << THÊM VÀO ĐÂY -->
+    <script src="js/cart.js"></script> 
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
-    <script src="js/builder.js"></script> <!-- Script riêng của trang builder -->
+    <script src="js/builder.js"></script>
+
+    <!-- 3. Tích hợp Script của Driver.js & Cấu hình Tour -->
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const driver = window.driver.js.driver;
+            
+            const driverObj = driver({
+                showProgress: true,
+                animate: true,
+                doneBtnText: 'Bắt đầu build!',
+                nextBtnText: 'Tiếp theo',
+                prevBtnText: 'Quay lại',
+                popoverClass: 'driverjs-theme',
+                steps: [
+                    { 
+                        element: '.builder-title', 
+                        popover: { 
+                            title: 'Tự Build PC 🖥️', 
+                            description: 'Công cụ giúp bạn tự tay chọn lựa từng linh kiện để lắp ráp bộ máy tính mơ ước.', 
+                            side: "bottom", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.component-selector', 
+                        popover: { 
+                            title: 'Chọn Linh Kiện 🖱️', 
+                            description: 'Bắt đầu bằng việc chọn CPU. Hệ thống sẽ tự động lọc ra các Mainboard tương thích (Socket) với CPU bạn vừa chọn.', 
+                            side: "top", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.compatibility-check', 
+                        popover: { 
+                            title: 'Kiểm Tra Tương Thích ✅', 
+                            description: 'Đừng lo lắng về việc mua nhầm! Chúng tôi sẽ kiểm tra xem CPU và Mainboard có lắp vừa với nhau không.', 
+                            side: "left", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.price-summary', 
+                        popover: { 
+                            title: 'Dự Toán Chi Phí 💰', 
+                            description: 'Tổng giá tiền sẽ được cập nhật liên tục khi bạn thêm hoặc thay đổi linh kiện.', 
+                            side: "left", 
+                            align: 'center' 
+                        } 
+                    },
+                    { 
+                        element: '.btn-add-to-cart', 
+                        popover: { 
+                            title: 'Hoàn Tất 🛒', 
+                            description: 'Sau khi chọn đủ 5 món linh kiện cơ bản, nút này sẽ sáng lên để bạn thêm toàn bộ vào giỏ hàng.', 
+                            side: "left", 
+                            align: 'center' 
+                        } 
+                    }
+                ]
+            });
+
+            // Tự động chạy lần đầu
+            const hasSeenBuilderTour = localStorage.getItem('hasSeenBuilderTour');
+            if (!hasSeenBuilderTour) {
+                // Đợi 1 chút để UI ổn định
+                setTimeout(() => {
+                    driverObj.drive();
+                    localStorage.setItem('hasSeenBuilderTour', 'true');
+                }, 1000);
+            }
+
+            // Gán sự kiện cho nút ?
+            document.getElementById('start-tour-btn').addEventListener('click', () => {
+                driverObj.drive();
+            });
+        });
+    </script>
 </body>
 
 </html>
